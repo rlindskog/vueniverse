@@ -1,8 +1,8 @@
 {
-  "name": "Vueniverse",
+  "name": "{{name}}",
   "version": "1.0.0",
-  "description": "A fullstack starter project for create universal Javascript apps. The client is built with Vue.js and the server is build with Express.",
-  "author": "Ryan Lindskog <r.lindskog17@gmail.com>",
+  "description": "{{description}}",
+  "author": "{{author}}",
   "private": true,
   "scripts": {
     "dev": "run-p dev-server",

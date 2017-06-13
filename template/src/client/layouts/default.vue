@@ -17,7 +17,7 @@
             </v-list-tile-avatar>
             <v-list-tile-content>
               <v-list-tile-title>
-                Vueniverse
+                {{name}}
                 </v-list-tile-title>
             </v-list-tile-content>
             <v-list-tile-action icon>
@@ -56,7 +56,7 @@
     </v-navigation-drawer>
     <v-toolbar class="indigo darken-4" light fixed>
       <v-toolbar-side-icon v-if="$store.state.user.isAuthenticated" light @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Vueniverse</v-toolbar-title>
+      <v-toolbar-title>{{name}}</v-toolbar-title>
       <v-menu bottom left>
         <v-btn icon="icon" slot="activator" light>
           <v-icon>more_vert</v-icon>
