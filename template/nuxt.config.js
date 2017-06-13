@@ -5,16 +5,20 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = {
+  srcDir: path.resolve(__dirname, 'src', 'client'),
+  build: {
+    vendor: ['vuetify', 'jwt-decode', 'axios']
+  },
+  buildDir: 'dist/client',
+  cache: true,
+  css: [{ src: '~assets/style/app.styl', lang: 'styl' }],
   env: {
     API_URL: process.env.API_URL,
     API_HOST: process.env.API_HOST,
     API_PORT: process.env.API_PORT
   },
-  srcDir: path.resolve(__dirname, 'src', 'client'),
-  buildDir: 'dist/client', // for when support for this comes
-  cache: true,
   head: {
-    title: 'zenapp',
+    title: '{{name}}',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -25,12 +29,8 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
-  css: [{ src: '~assets/style/app.styl', lang: 'styl' }],
-  build: {
-    vendor: ['vuetify', 'jwt-decode', 'axios']
-  },
+  plugins: ['~plugins/vuetify.js'],
   router: {
     middleware: ['ssr-cookie']
-  },
-  plugins: ['~plugins/vuetify.js']
+  }
 }
