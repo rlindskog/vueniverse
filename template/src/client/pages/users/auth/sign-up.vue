@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex xs12 sm10 offset-sm1 md6 offset-md3 lg6 offset-lg6 >
         <h3>Sign Up</h3>
-        <sign-up-form/>
+        <sign-up-form :redirect="{ name: 'users-auth-sign-in' }"/>
         <br>
         <p>Already have an account? <nuxt-link :to="{ name: 'users-auth-sign-in' }">Sign in!</nuxt-link></p>
       </v-flex>
@@ -17,7 +17,3 @@ export default {
   components: { signUpForm }
 }
 </script>
-
-<style>
-
-</style>

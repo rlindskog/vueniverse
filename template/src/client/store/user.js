@@ -11,7 +11,8 @@ export const state = () => {
     email: '',
     signUpPending: false,
     signInPending: false,
-    signOutPending: false
+    signOutPending: false,
+    signInSuccess: false
   }
 }
 
@@ -23,6 +24,7 @@ export const mutations = {
   SIGN_UP_SUCCESS (state, user) {
     console.log('Sign Up success!')
     state.signUpPending = false
+    state.signUpSuccess = true
   },
   SIGN_UP_FAILURE (state, error) {
     console.log('Sign Up Failure.')
@@ -45,6 +47,8 @@ export const mutations = {
     state.isAuthenticated = true
     console.log('Sign In success!')
     state.signInPending = false
+    state.signInSuccess = true
+    state.signUpSuccess = true
     // $router.replace({ name: 'users-username', params: { username: state.user.username } })
   },
   SIGN_IN_FAILURE (state, error) {
@@ -67,6 +71,8 @@ export const mutations = {
     state.email = ''
     state.signOutPending = false
     console.log('Sign out success!')
+    state.signInSuccess = false
+    state.signUpSuccess = false
   },
   SIGN_OUT_FAILURE (state, error) {
     state.signOutPending = false

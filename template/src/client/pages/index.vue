@@ -1,23 +1,34 @@
+{{{{raw}}}}
 <template>
-  <div>
-  <v-container v-if="$store.state.user.isAuthenticated">
-    <h1>Home</h1>
-    <nuxt-link :to="{ name: 'users-username', params: { username: this.$store.state.user.username } }">
-      {{ $store.state.user.username }}, view your profile.
-    </nuxt-link>
+  <v-container fluid>
+    <v-layout>
+      <v-flex xs12 sm10 offset-sm1 md6 offset-md3 lg6 offset-lg6 >
+        <v-container v-if="$store.state.user.isAuthenticated">
+          <h3 class="text-xs-center">Vueniverse<v-btn class="xs-center" router :to="{ name: 'users-username', params: { username: this.$store.state.user.username } }">
+            view your profile.
+          </v-btn></h3>
+          <img id="logo" :src="vueniverseLogo" alt="vueniverse_logo.svg">
+          <v-btn class="xs-center" router :to="{ name: 'users-username', params: { username: this.$store.state.user.username } }">
+            view your profile.
+          </v-btn>
+        </v-container>
+        <v-container v-else>
+          <h3 class="text-xs-center">Vueniverse</h3>
+          <img id="logo" :src="vueniverseLogo" alt="vueniverse_logo.svg">
+        </v-container>
+      </v-flex>
+    </v-layout>
   </v-container>
-  <v-container v-else>
-    <h1>Welcome to Vueniverse!</h1>
-    <nuxt-link :to="{ name: 'users-auth-sign-in' }">Sign-in!</nuxt-link>
-  </v-container>
-  </div>
 </template>
+{{{{/raw}}}}
 
 <script>
+import vueniverseLogo from '~assets/img/vueniverse_logo.svg'
 export default {
+  data() {
+    return {
+      vueniverseLogo
+    }
+  }
 }
 </script>
-
-<style>
-
-</style>

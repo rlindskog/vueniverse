@@ -1,3 +1,4 @@
+{{{{raw}}}}
 <template>
   <v-container>
     <h1>
@@ -9,6 +10,8 @@
     <v-btn router to="/" v-if="error.statusCode === 404">Home</v-btn>
   </v-container>
 </template>
+{{{{/raw}}}}
+
 <script>
 export default {
   props: ['error']

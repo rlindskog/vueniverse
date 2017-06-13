@@ -12,7 +12,7 @@
     "stop": "run-p stop-*",
     "git": "run-s git-*",
     "dev-server": "backpack dev",
-    "db": "mongod",
+    "dev-db": "mongod --dbpath ./db",
     "build-server": "cross-env NODE_ENV=production backpack build",
     "build-client": "cross-env NODE_ENV=production nuxt build",
     "start-app": "cross-env NODE_ENV=production pm2 start ./dist/server/main.js -i max",

@@ -1,3 +1,4 @@
+{{{{raw}}}}
 <template>
   <v-container>
     <h3>Users</h3>
@@ -9,6 +10,7 @@
     <hr>
   </v-container>
 </template>
+{{{{/raw}}}}
 
 <script>
 export default {

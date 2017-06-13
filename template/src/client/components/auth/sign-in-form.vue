@@ -15,6 +15,7 @@
         ></v-text-field>
         <v-btn @click.native="submit">Submit</v-btn>
       </form>
+      <p class="error--text">{{ errorMessage }}</p>
     </v-container>
   </v-card>
 </template>
@@ -25,42 +26,23 @@ export default {
   data () {
     return {
       username: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     }
   },
   methods: {
-    // async submit () {
-    //   await this.$store.dispatch('user/signIn', {
-    //     username: this.username,
-    //     password: this.password,
-    //   })
-    //   if (this.$store.state.user.isAuthenticated) {
-    //     console.log(this.$store.state.user.username)
-    //     this.$router.replace(this.redirect)
-    //     this.username = ''
-    //     this.password = ''
-    //   } else {
-    //     console.log('Oops, something went wrong.')
-    //   }
-    // }
     submit () {
       this.$store.dispatch('user/signIn', {
         username: this.username,
         password: this.password,
-      }).then(() => this.$router.replace(this.redirect))
-      // if (this.$store.state.user.isAuthenticated) {
-      //   console.log(this.$store.state.user.username)
-      //   this.$router.replace(this.redirect)
-      //   this.username = ''
-      //   this.password = ''
-      // } else {
-      //   console.log('Oops, something went wrong.')
-      // }
+      }).then(() => {
+        if (this.$store.state.user.signInSuccess) {
+          this.$router.replace(this.redirect)
+        } else {
+          this.errorMessage = 'Incorrect username or password'        
+        }
+      })
     }
   }
 }
 </script>
-
-<style>
-
-</style>

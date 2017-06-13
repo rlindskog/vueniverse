@@ -66,6 +66,7 @@ let usernameTimeout = null
 let emailTimeout = null
 
 export default {
+  props: ['redirect'],
   data () {
     return {
       username: '',
@@ -135,6 +136,12 @@ export default {
         lastName: this.lastName,
         password1: this.password1,
         password2: this.password2
+      }).then(() => {
+        if (this.$store.state.user.signUpSuccess) {
+          this.$router.replace(this.redirect)
+        } else {
+          this.errorMessage = 'Something went wrong'        
+        }
       })
       this.email = ''
       this.username = ''
@@ -146,7 +153,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

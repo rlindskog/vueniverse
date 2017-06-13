@@ -1,3 +1,4 @@
+{{{{raw}}}}
 <template>
   <v-container>
     <h1>{{ this.fetchedUser.username }}</h1>
@@ -5,6 +6,7 @@
     <h5>{{ this.fetchedUser.email }}</h5>
   </v-container>
 </template>
+{{{{/raw}}}}
 
 <script>
 import Cookies from 'js-cookie'

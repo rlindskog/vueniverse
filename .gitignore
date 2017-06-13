@@ -16,8 +16,5 @@ build
 # database
 db
 
-# dotenv
-.env
-
 # test version of template
 vueniverse-run
