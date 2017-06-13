@@ -1,0 +1,23 @@
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
+
+# Backpack build
+build
+
+# database
+db
+
+# dotenv
+.env
+
+# test version of template
+vueniverse-run
