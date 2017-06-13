@@ -8,9 +8,6 @@
             view your profile.
           </v-btn></h3>
           <img id="logo" :src="vueniverseLogo" alt="vueniverse_logo.svg">
-          <v-btn class="xs-center" router :to="{ name: 'users-username', params: { username: this.$store.state.user.username } }">
-            view your profile.
-          </v-btn>
         </v-container>
         <v-container v-else>
           <h3 class="text-xs-center">Vueniverse</h3>
