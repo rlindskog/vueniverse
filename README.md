@@ -19,6 +19,11 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
     cd {{ your-project-name }}
     npm install
 
+**Create and run a MongoDB database (in a seperate terminal window)**
+
+    mkdir ./db
+    npm run dev-db
+
 **Run in development**
 
     npm run dev
