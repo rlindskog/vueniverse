@@ -13,8 +13,5 @@ dist
 # Backpack build
 build
 
-# database
-db
-
 # test version of template
 vueniverse-run
