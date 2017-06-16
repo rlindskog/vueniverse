@@ -1,10 +1,32 @@
-vue init rlindskog/vueniverse
+Welcome to Vueniverse!
+===================
 
--- more coming soon.
+Vueniverse is a full-stack JavaScript starter project. Some of the features that comes baked in include:
 
+ - Universal es2015 JavaScript.  No more context switch between client/server code!
+ - A REST API, and full user authentication
+ - Client Side routing, Server Side Rendering, Global State Management thanks to Vuejs and Nuxtjs!
+ - Abstracted WebPack build process.
+ - Universal HMR for a clean development process, thanks to Nuxtjs and BackPack.
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+*You must have [vue-cli](https://github.com/vuejs/vue-cli)* installed.
 
-## Backpack
+    npm install -g vue-cli
 
-We use [backpack](https://github.com/palmerhq/backpack) to watch and build the application, so you can use the latest ES6 features (module syntax, async/await, etc.).
+**Create Project**
+
+    vue init rlindskog/vueniverse {{ your-project-name }}
+    cd {{ your-project-name }}
+    npm install
+
+**Run in development**
+
+    npm run dev
+
+**Build for production**
+
+    npm run build
+
+**Run in production**
+
+    npm run start
