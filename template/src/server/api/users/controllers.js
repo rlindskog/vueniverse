@@ -38,16 +38,13 @@ export const check = {
   async get (req, res) {
     try {
       let authorizedQueries = ['username', 'email']
-      console.log(authorizedQueries.includes(req.query.check))
       if (authorizedQueries.includes(req.query.check)) {
         let check = req.query.check
         let data = req.query.data
         let user = await User.find({ [check]: data })
         if (user.length) {
-          console.log(data + ' exists!!!')
           res.json({ exists: true })
         } else {
-          console.log(data + ' doesn\'t exist!!!')
           res.json({ exists: false })
         }
       } else {
@@ -56,27 +53,6 @@ export const check = {
     } catch (error) {
       res.status(500).json(error)
     }
-      // if (req.query.usernameExists) {
-      //   let username = req.query.usernameExists
-      //   let user = await User.find({ username })
-      //   if (user.length) {
-      //     res.json({ exists: true })
-      //   } else {
-      //     res.json({ exists: false })
-      //   }
-      // } else if (req.query.emailExists) {
-      //   let email = req.query.emailExists
-      //   let user = await User.find({ email })
-      //   if (user.length) {
-      //     res.json({ exists: true })
-      //   } else {
-      //     res.json({ exists: false })
-      //   }
-      // }
-    //   res.json({ message: 'No authorized query present.' })
-    // } catch (error) {
-    //   res.status(500).json({ error })
-    // }
   }
 }
 

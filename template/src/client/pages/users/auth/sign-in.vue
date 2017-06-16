@@ -18,7 +18,6 @@ export default {
   data() {
     return {
       redirect: { name: 'index' }
-      // redirect: { name: 'users-username', params: { username: this.$store.state.user.username } }
     }
   }
 }

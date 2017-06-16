@@ -1,6 +1,6 @@
 module.exports = {
   "helpers": {
-    "raw": function(options) {
+    "raw": function (options) {
       return options.fn(this)
     }
   },
