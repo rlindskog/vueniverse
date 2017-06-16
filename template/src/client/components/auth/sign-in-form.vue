@@ -1,3 +1,4 @@
+{{{{raw}}}}
 <template>
   <v-card class="grey lighten-4 elevation-3">
     <v-container fluid>
@@ -19,6 +20,7 @@
     </v-container>
   </v-card>
 </template>
+{{{{/raw}}}}
 
 <script>
 export default {
