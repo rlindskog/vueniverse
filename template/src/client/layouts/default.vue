@@ -121,9 +121,9 @@ export default {
             { title: 'Account' },
             { title: 'Privacy' }
           ]
-        },
-        name: {{name}}
+        }
       ],
+      name: {{name}},
       drawer: true, // this.$store.state.user.isAuthenticated, // was true, only if signed-up already.
       mini: true, // this.$store.state.user.isAuthenticated, // was true, ...
       right: null,
