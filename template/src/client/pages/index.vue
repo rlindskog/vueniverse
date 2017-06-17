@@ -2,7 +2,7 @@
 <template>
   <v-container fluid>
     <v-layout>
-      <v-flex xs12 sm10 offset-sm1 md6 offset-md3 lg6 offset-lg6 >
+      <v-flex xs12 sm10 offset-sm1 md6 offset-md3 xl6 offset-xl6 >
         <v-container v-if="$store.state.user.isAuthenticated">
           <h3 class="text-xs-center">Vueniverse<v-btn class="xs-center" router :to="{ name: 'users-username', params: { username: this.$store.state.user.username } }">
             view your profile.
