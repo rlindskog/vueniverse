@@ -1,6 +1,6 @@
 Welcome to Vueniverse!
 ===================
-<img src="https://cdn.rawgit.com/rlindskog/vueniverse/master/template/src/client/assets/img/vueniverse_logo.svg"/>
+<img style="height: 400px;" src="https://cdn.rawgit.com/rlindskog/vueniverse/master/template/src/client/assets/img/vueniverse_logo.svg"/>
 Vueniverse is a full-stack JavaScript starter project. Some of the features that comes baked in include:
 
  - Universal es2015 JavaScript.  No more context switch between client/server code!
