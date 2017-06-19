@@ -32,7 +32,7 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 
     npm run build
 
-**Run in production - uses (pm2)[https://github.com/Unitech/pm2]**
+**Run in production - uses [pm2](https://github.com/Unitech/pm2)**
 
     npm run start
 
