@@ -35,3 +35,9 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 **Run in production**
 
     npm run start
+
+**FUTURE**
+Pull requests welcome! I'm lookin to implement the following options VIA the vue-cli
+ - An option to choose bewteen PostgreSQL and MongoDB (MongoDB currently implemented)
+ - An option to choose bewteen AirBNB and Standard Linting Style.
+ - An option to include tests.
