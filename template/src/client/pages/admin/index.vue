@@ -1,6 +1,7 @@
 <template>
   <v-container>
     <!--<v-layout>
+      <p>To be implemented...</p>
       <v-flex xs12 sm10 offset-sm1 md6 offset-md3 lg6 offset-lg6 >
         <v-card class="grey lighten-4 elevation-3">
           <v-container>

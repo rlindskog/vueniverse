@@ -2,7 +2,7 @@
 <template>
   <v-card class="grey lighten-4 elevation-3">
     <v-container fluid>
-      <form @submit.native.prevent="submit">
+      <form @keyup.enter="submit">
         <v-text-field
           v-model="username"
           name="username"

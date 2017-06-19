@@ -1,7 +1,6 @@
 {{{{raw}}}}
 <template>
   <v-app>
-    
     <v-navigation-drawer
       enable-resize-watcher
       disable-route-watcher
@@ -99,11 +98,6 @@ export default {
   data () {
     return {
       items: [
-        // {
-        //   action: 'profile',
-        //   title: 'Profile',
-        //   to: { name: 'users-username', params: { username: this.$store.state.user.username } }
-        // },
         {
           action: 'android',
           title: 'Something',
@@ -124,8 +118,8 @@ export default {
         }
       ],
       name: '{{name}}',
-      drawer: true, // this.$store.state.user.isAuthenticated, // was true, only if signed-up already.
-      mini: true, // this.$store.state.user.isAuthenticated, // was true, ...
+      drawer: true,
+      mini: true,
       right: null,
       profilePath: this.$store.state.user.isAuthenticated ?
         { name: 'users-username', params: { username: 'rlindskog' } } :
@@ -134,6 +128,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>

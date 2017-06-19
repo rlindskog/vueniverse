@@ -3,7 +3,6 @@ import usersRoutes from './users/routes'
 import adminRoutes from './admin/routes'
 import listEndpoints from 'express-list-endpoints'
 import authenticate from '~middleware/authenticate'
-// import app from '../../server'
 const router = Router()
 
 // Add USERS Routes

@@ -1,7 +1,7 @@
 <template>
   <v-card class="grey lighten-4 elevation-3">
     <v-container fluid>
-      <form v-on:keyup.enter="submit">
+      <form @keyup.enter="submit">
         <v-text-field
           @keyup.native="checkUsername"
           v-model="username"

@@ -24,6 +24,7 @@ router.route('/:username')
   .get(username.get)
   .post(username.post)
   .delete(username.delete)
+// TODO: add ability for user to delete their own profile.
 // router.get('/:username', authenticate, authErrors, username.get)
 // router.post('/:username', authenticate, authErrors, username.post)
 // router.delete('/:username', authenticate, authErrors, username.delete)

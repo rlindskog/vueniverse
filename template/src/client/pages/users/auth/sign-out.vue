@@ -20,7 +20,3 @@ export default {
   components: { signOutForm }
 }
 </script>
-
-<style>
-
-</style>

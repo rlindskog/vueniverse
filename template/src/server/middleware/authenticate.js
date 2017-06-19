@@ -1,4 +1,4 @@
-import blacklist from 'express-jwt-blacklist-updated'
+import blacklist from 'express-jwt-blacklist'
 import { compose } from 'compose-middleware'
 import jwt from 'express-jwt'
 
@@ -23,19 +23,17 @@ const jwtMiddleware = function (options) {
     secret: process.env.SECRET,
     isRevoked: blacklist.isRevoked,
     getToken: function fromCookiesHeadersQueryBody (req) {
-      // let token = req.cookies.token || req.headers['Authoritzation'] || req.query.token || req.body.token
       // Priority order.: Cookies, headers (Authorization: Bearer <token>), query, then body.
       if (req.cookies && req.cookies.token) {
         return req.cookies.token
+      } else if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+        console.log('Headers method.')
+        return req.headers.authorization.split(' ')[1]
+      } else if (req.query && req.query.token) {
+        return req.query.token
+      } else if (req.body && req.body.token) {
+        return req.body.token
       }
-      // else if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-      //   console.log('Headers method.')
-      //   return req.headers.authorization.split(' ')[1]
-      // } else if (req.query && req.query.token) {
-      //   return req.query.token
-      // } else if (req.body && req.body.token) {
-      //   return req.body.token
-      // }
       return null
     },
     ...options
@@ -51,7 +49,7 @@ const authErrors = function (err, req, res, next) {
 }
 
 function authenticate (options = {}) {
-  return compose([jwtMiddleware(options) /* , authErrors */])
+  return compose([jwtMiddleware(options), authErrors])
 }
 
 export default authenticate

@@ -20,7 +20,3 @@ export default {
   components: { signInForm, signUpForm, signOutForm }
 }
 </script>
-
-<style>
-
-</style>

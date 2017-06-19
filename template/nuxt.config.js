@@ -5,7 +5,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = {
-  srcDir: path.resolve(__dirname, 'src', 'client'),
   build: {
     vendor: ['vuetify', 'jwt-decode', 'axios']
   },
@@ -32,5 +31,6 @@ module.exports = {
   plugins: ['~plugins/vuetify.js'],
   router: {
     middleware: ['ssr-cookie']
-  }
+  },
+  srcDir: path.resolve(__dirname, 'src', 'client')
 }
