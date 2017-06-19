@@ -32,9 +32,13 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 
     npm run build
 
-**Run in production**
+**Run in production - uses (pm2)[https://github.com/Unitech/pm2]**
 
     npm run start
+
+**Stop production processes**
+
+    npm run stop
 
 **FUTURE TODO**
  - vue-cli option to choose bewteen PostgreSQL and MongoDB (MongoDB currently implemented)
