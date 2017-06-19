@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "run-p dev-server",
     "build": "cross-env NODE_ENV=production run-s build-client build-server",
-    "start": "cross-env NODE_ENV=production run-s start-db start-app",
+    "start": "cross-env NODE_ENV=production run-s start-app",
     "generate": "nuxt generate",
     "stop": "run-p stop-*",
     "git": "run-s git-*",
@@ -17,7 +17,6 @@
     "build-client": "cross-env NODE_ENV=production nuxt build",
     "start-app": "cross-env NODE_ENV=production pm2 start ./dist/server/main.js -i max",
     "stop-app": "pm2 stop all",
-    "stop-db": "killall mongod",
     "clean": "rimraf ./db",
     "precommit": "run-s lint",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
