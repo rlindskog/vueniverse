@@ -10,6 +10,8 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
  - Abstracted WebPack build process.
  - Universal HMR for a clean development process, thanks to Nuxtjs and BackPack.
 
+(Demo)[https://vn-src-zlrdxjkdrb.now.sh/]
+
 *You must have [vue-cli](https://github.com/vuejs/vue-cli)* installed.
 
     npm install -g vue-cli
