@@ -10,7 +10,7 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
  - Abstracted WebPack build process.
  - Universal HMR for a clean development process, thanks to Nuxtjs and BackPack.
 
-[Demo](https://vn-src-zlrdxjkdrb.now.sh/)
+[Live Demo](https://vn-src-zlrdxjkdrb.now.sh/)
 
 *You must have [vue-cli](https://github.com/vuejs/vue-cli)* installed.
 
@@ -42,6 +42,15 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 **Stop production processes**
 
     npm run stop
+
+**Deploy with [NOW](https://zeit.co/now)**
+
+    npm install now-cli
+    rm -rf ./db
+
+You will have to make run a database else where in paste the link to it in .prod.env DB_URL.  Then run...
+
+    now
 
 **FUTURE TODO**
  - vue-cli option to choose bewteen PostgreSQL and MongoDB (MongoDB currently implemented)
