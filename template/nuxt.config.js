@@ -1,8 +1,9 @@
 const path = require('path')
 
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
+require('dotenv').config({
+  silent: true,
+  path: process.env.NODE_ENV === 'production' ? '.prod.env' : '.dev.env'
+})
 
 module.exports = {
   build: {

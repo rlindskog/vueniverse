@@ -14,15 +14,12 @@ const app = express()
 // Global middleware
 // only allow http://127.0.0.1:3000 and http://localhost:3000
 // only allow process.env.API_URL, process.env.SERVER_API_URL, and process.env.PAGE_URL
-app.use(cors({
-  origin: process.env.PAGE_URL
-}))
+// app.use(cors({
+//   origin: process.env.NOW_URL // fix this.
+// }))
 app.use(urlencoded({ extended: false }))
 app.use(json())
 app.use(cookieParser())
-
-// set the port for nuxt
-// app.set('port', process.env.PORT)
 
 // Import API Routes
 app.use('/api', apiRoutes)
@@ -37,8 +34,8 @@ async function start () {
   // Add nuxt.js middleware
   app.use(nuxt.render)
   // Listen to the server
-  app.listen(process.env.PAGE_PORT, process.env.PAGE_HOST)
-  console.log(`Server listening on ${process.env.PAGE_URL}`) // eslint-disable-line no-console
+  app.listen(process.env.PORT, process.env.HOST)
+  console.log(`Server listening on http://${process.env.HOST}:${process.env.PORT}`) // eslint-disable-line no-console
 }
 
 // setup the database connection
