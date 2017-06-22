@@ -49,7 +49,9 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
     npm install now-cli
     rm -rf ./db
 
-You will have to make run a database else where in paste the link to it in .prod.env DB_URL.  Then run...
+You will have to make a database else where, I recommend the [Atlas free teir](https://www.mongodb.com/cloud/atlas). When you do, paste the url to the DB_URL variable in .prod.env
+
+Then run...
 
     now
 
