@@ -2,13 +2,14 @@ Welcome to Vueniverse!
 ===================
 <img height="300px" src="https://cdn.rawgit.com/rlindskog/vueniverse/master/template/src/client/assets/img/vueniverse_logo.svg"/>
 Vueniverse is a full-stack JavaScript starter project. Some of the features that comes baked in include:
- 
- - PWA by default.
- - Universal es2015 JavaScript.  No more context switch between client/server code!
- - A REST API, and full user authentication
- - Client Side routing, Server Side Rendering, Global State Management thanks to Vuejs and Nuxtjs!
+
+ - PWA by default, 100 lighthouse PWA score.
+ - Universal es2015 JavaScript.  No more context switching between client/server code!
+ - A REST API, and full user authentication.
+ - Client Side routing, Server Side Rendering and Global State Management thanks to Vuejs and Nuxtjs!
  - Abstracted WebPack build process.
  - Universal HMR for a clean development process, thanks to Nuxtjs and BackPack.
+ - Ready for deployment with [NOW](https://zeit.co/now)
 
 [Live Demo](https://vn-src-zlrdxjkdrb.now.sh/)
 
