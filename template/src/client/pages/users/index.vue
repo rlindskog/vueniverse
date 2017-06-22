@@ -15,7 +15,9 @@
 <script>
 export default {
   fetch ({ store }) {
-    return store.dispatch('fetchAllUsers')
+    if (store.state.user.isAuthenticated) {
+      return store.dispatch('fetchAllUsers')
+    }
   }
 }
 </script>
