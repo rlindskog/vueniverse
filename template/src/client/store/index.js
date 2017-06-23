@@ -29,6 +29,12 @@ export const mutations = {
   },
   FETCH_ALL_USERS_FAILURE (state, error) {
     console.error(error.response.data)
+  },
+  CLEAR_LISTS (state) {
+    // set each list to an empty array
+    Object.keys(state.lists).forEach(list => {
+      state.lists[list] = []
+    })
   }
 }
 export const actions = {

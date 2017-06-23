@@ -102,8 +102,8 @@ export const actions = {
   async signOut ({ commit }) {
     try {
       commit('SIGN_OUT_REQUEST')
-      // let { data } = await axios.post('/users/sign-out')
       commit('SIGN_OUT_SUCCESS')
+      commit('CLEAR_LISTS', null, { root: true })
     } catch (error) {
       commit('SIGN_OUT_FAILURE', error)
     }
