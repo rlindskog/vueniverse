@@ -2,12 +2,18 @@
 <template>
   <v-container>
     <h3>Users</h3>
-    <div v-for="user in $store.state.lists.users">
+    <div v-if="$store.state.user.isAuthenticated">
+      <div v-for="user in $store.state.lists.users">
+        <hr>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+      </div>
       <hr>
-      <p>Username: {{ user.username }}</p>
-      <p>Email: {{ user.email }}</p>
     </div>
-    <hr>
+    <div v-else>
+      <h3>Must be authenticated to view all users.</h3>
+      <v-btn router :to="{ name: 'users-auth-sign-in' }">Sign in</v-btn>
+    </div>
   </v-container>
 </template>
 {{{{/raw}}}}
