@@ -1,4 +1,3 @@
-import './env'
 import { urlencoded, json } from 'body-parser'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
