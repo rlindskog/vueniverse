@@ -54,6 +54,8 @@ Then run...
 
     npm run deploy
 
+If you have any problems, please don't hesitate to create an issue!
+
 **FUTURE TODO**
  - vue-cli option to choose bewteen PostgreSQL and MongoDB (MongoDB currently implemented)
  - vue-cli option to choose bewteen AirBNB and Standard Linting Style.
