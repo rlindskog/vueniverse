@@ -1,10 +1,25 @@
-const secrets = require('../secrets.json')
+const NowClient = require('now-client')
 const { spawn } = require('child_process')
+const secretsObj = require('../secrets.json')
+const now = new NowClient()
 
-let args = []
-Object.keys(secrets).forEach(variable => {
-  let arg = ['-e', `${variable}='${secrets[variable]}'`]
-  args = args.concat(arg)
-})
+// this script checks to your NOW account to see if it has any secrets saved that you have locally.
+// if it does, it deletes them, and adds your secrets locally. It does this on each deployment to maintain fresh secrets.
+// it will run a deployment in the shell.
+async function deploy(secretsObj) {
+  try {
+    let currentSecrets = await now.getSecrets()
+    currentSecrets = currentSecrets.map(item => item.name)
+    let localSecrets = Object.keys(secretsObj).map(item => item.toLowerCase())
+    for (let localSecret of localSecrets) {
+      let found = currentSecrets.find(el => el === localSecret)
+      if (found) await now.deleteSecret(localSecret)
+      await now.createSecret(localSecret, secretsObj[localSecret.toUpperCase()])
+    }
+    spawn('now', { shell: true, stdio: 'inherit' })
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-spawn('now', args, { shell: true, stdio: 'inherit' })
+deploy(secretsObj)

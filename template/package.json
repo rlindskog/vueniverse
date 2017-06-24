@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "run-p dev-server",
-    "build": "run-s build-client build-server",
+    "build": "run-p build-client build-server",
     "start": "run-s start-app",
     "deploy": "node ./scripts/deploy.js",
     "generate": "nuxt generate",

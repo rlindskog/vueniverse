@@ -1,9 +1,11 @@
 const path = require('path')
 
-require('dotenv').config({
-  silent: true,
-  path: process.env.NODE_ENV === 'production' ? '.prod.env' : '.dev.env'
-})
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({
+    silent: true,
+    path: '.dev.env'
+  })
+}
 
 module.exports = {
   build: {
@@ -13,9 +15,8 @@ module.exports = {
   cache: true,
   css: [{ src: '~assets/style/app.styl', lang: 'styl' }],
   env: {
-    API_URL: process.env.API_URL,
-    API_HOST: process.env.API_HOST,
-    API_PORT: process.env.API_PORT
+    HOST: process.env.HOST,
+    PORT: process.env.PORT
   },
   head: {
     title: '{{name}}',
@@ -28,7 +29,6 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
-  plugins: ['~plugins/vuetify.js'],
   manifest: {
     name: '{{name}}',
     description: '{{description}}',
