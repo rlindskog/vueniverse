@@ -6,5 +6,5 @@
     "PORT": "80",
     "SECRET": "@secret",
     "DB_URL": "@db_url"
-  },
+  }
 }
