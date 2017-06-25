@@ -1,5 +1,4 @@
 .dev.env
-.now.json
 dist
 node_modules
 secrets.json

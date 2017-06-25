@@ -1,0 +1,10 @@
+{
+  "name": "{{name}}",
+  "env": {
+    "NODE_ENV": "production",
+    "HOST": "0.0.0.0",
+    "PORT": "80",
+    "SECRET": "@secret",
+    "DB_URL": "@db_url"
+  },
+}
