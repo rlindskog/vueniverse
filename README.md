@@ -23,14 +23,30 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
     cd {{ your-project-name }}
     npm install
 
-**Run a MongoDB database**
+**Run a MongoDB database locally**
 
     npm run start-db
-    
-**Stop the MongoDB database**
+
+**Stop the MongoDB database locally**
 
     npm run stop-db
 
+**Run a Redis database locally**
+
+[Install](https://redis.io/topics/quickstart)
+
+    $ wget http://download.redis.io/redis-stable.tar.gz
+    $ tar xvzf redis-stable.tar.gz
+    $ cd redis-stable
+    $ make
+    $ # wait for it to install...
+    $ sudo cp src/redis-server /usr/local/bin/
+    $ sudo cp src/redis-cli /usr/local/bin/
+
+Then run
+    
+    redis-server
+    
 **Run in development**
 
     npm run dev
