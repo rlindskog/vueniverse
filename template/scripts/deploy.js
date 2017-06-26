@@ -16,7 +16,12 @@ async function deploy(secretsObj) {
       if (found) await now.deleteSecret(localSecret)
       await now.createSecret(localSecret, secretsObj[localSecret.toUpperCase()])
     }
-    spawn('now', { shell: true, stdio: 'inherit' })
+    // get env variable args, for example: $ now -e @secret -e @db_url
+    let secretEnvArgs = Object.keys(secretsObj).reduce((args, secret) => {
+      args.push('-e', `@${secret.toLowerCase()}`)
+      return args
+    }, [])
+    spawn('now', secretEnvArgs, { shell: true, stdio: 'inherit' })
   } catch (error) {
     console.log(error)
   }
