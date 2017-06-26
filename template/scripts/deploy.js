@@ -18,7 +18,7 @@ async function deploy(secretsObj) {
     }
     // get env variable args, for example: $ now -e @secret -e @db_url
     let secretEnvArgs = Object.keys(secretsObj).reduce((args, secret) => {
-      args.push('-e', `@${secret.toLowerCase()}`)
+      args.push('-e', `${secret.toUpperCase()}='@${secret.toLowerCase()}'`)
       return args
     }, [])
     spawn('now', secretEnvArgs, { shell: true, stdio: 'inherit' })
