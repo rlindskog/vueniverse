@@ -1,9 +1,9 @@
 import blacklist from 'express-jwt-blacklist'
 import { compose } from 'compose-middleware'
 import jwt from 'express-jwt'
-{{ #if_eq session 'redis' }}import redis from 'redis'{{ /if_eq }}
+{{#if_eq session 'redis'}}import redis from 'redis'{{/if_eq}}
 
-{{ #if_eq session 'redis' }}
+{{#if_eq session 'redis'}}
 // redis persisted store.
 const client = redis.createClient(process.env.SESSION_PORT, process.env.SESSION_HOST)
 client.auth(process.env.SESSION_PASSWORD, error => { if (error) throw error })
@@ -17,11 +17,11 @@ blacklist.configure({
     keyPrefix: 'vueniverse:'
   }
 })
-{{ /if_eq }}
-{{ #if_eq session 'in-memory' }}
+{{/if_eq}}
+{{#if_eq session 'in-memory'}}
 // in-memory store
 blacklist.configure({ tokenId: 'jti' })
-{{ /if_eq }}
+{{/if_eq}}
 
 const jwtMiddleware = function (options) {
   return jwt({
