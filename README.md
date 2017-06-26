@@ -5,7 +5,7 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 
  - PWA by default, 100 lighthouse PWA score.
  - Universal es2015 JavaScript.  No more context switching between client/server code!
- - A REST API, and full user authentication.
+ - A REST API, and full user authentication with JWT, Redis blacklisting, and MongoDB.
  - Client Side routing, Server Side Rendering and Global State Management thanks to Vuejs and Nuxtjs!
  - Abstracted WebPack build process.
  - Universal HMR for a clean development process, thanks to Nuxtjs and BackPack.
@@ -51,7 +51,9 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 
     npm install -g now-cli
 
-You will have to make a database else where, I recommend the [Atlas free teir](https://www.mongodb.com/cloud/atlas). When you do, paste the url to the DB_URL variable in secrets.json.  Also add a SECRET variable.
+You will have to make a database else where, I recommend the [Atlas free teir](https://www.mongodb.com/cloud/atlas). When you do, paste the url to the DB_URL and a random SECRET variable to the secrets.json file.
+
+Also, if you decided to use the Redis option instead of in-memory (highly recommended), then you will have to create a Redis session store else where as well.  I recommend the [Redis Labs](https://redislabs.com/) free tier. Once you make your Redis session, add SESSION_HOST, SESSION_PORT, and SESSION_PASSWORD to the secrets.json file.
 
 Then run...
 
