@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  middleware: 'authenticated'
+  middleware: 'authenticated',
   fetch ({ store }) {
     if (store.state.user.isAuthenticated) {
       return store.dispatch('fetchAllUsers')

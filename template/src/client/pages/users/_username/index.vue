@@ -11,6 +11,7 @@
 <script>
 import Cookies from 'js-cookie'
 export default {
+  middleware: 'authenticated',
   data () {
     return {
       fetchedUser: this.$store.state.fetchedUser
