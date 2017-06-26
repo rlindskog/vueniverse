@@ -2,7 +2,6 @@
 dist
 node_modules
 secrets.json
-db
 
 static/manifest*.json
 static/sw.js
