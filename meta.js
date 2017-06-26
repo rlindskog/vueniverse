@@ -19,6 +19,14 @@ module.exports = {
     "author": {
       "type": "string",
       "message": "Author"
+    },
+    "session": {
+      "type": "list",
+      "message": "Choose a session strategy (for blacklisting JWTs)",
+      "choices": [
+        "redis",
+        "in-memory"
+      ]
     }
   },
   "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\nDocumentation can be found at https://www.github.com/rlindskog/vueniverse"
