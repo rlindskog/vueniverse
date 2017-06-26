@@ -31,7 +31,23 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 
     npm run stop-db
 
-**Run a Redis database locally**
+**Run in development**
+
+    npm run dev
+
+**Build for production**
+
+    npm run build
+
+**Run in production (runs the database and application in a subprocess)**
+
+    npm run start
+    
+**Stop production running (stops the database and application)**
+
+    npm run stop
+
+**Run a Redis database locally (use this if chose the redis session option)**
 
 [Install](https://redis.io/topics/quickstart)
 
@@ -46,22 +62,6 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 Then run
     
     redis-server
-    
-**Run in development**
-
-    npm run dev
-
-**Build for production**
-
-    npm run build
-
-**Run in production (runs the database and application in a subprocess)**
-
-    npm run start
-    
-**Stop production running (stops everything)**
-
-    npm run stop
 
 **Deploy with [NOW](https://zeit.co/now)**
 
