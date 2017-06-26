@@ -82,6 +82,11 @@
               <v-list-tile-title>Users</v-list-tile-title>
             </v-list-tile>
           </v-list-item>
+          <v-list-item>
+            <v-list-tile ripple router to="/admin" v-if="$store.state.user.admin">
+              <v-list-tile-title>Admin</v-list-tile-title>
+            </v-list-tile>
+          </v-list-item>
         </v-list>
       </v-menu>
     </v-toolbar>
