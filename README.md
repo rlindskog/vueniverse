@@ -23,9 +23,13 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
     cd {{ your-project-name }}
     npm install
 
-**Run a development MongoDB database (in a seperate terminal window)**
+**Run a MongoDB database (in a seperate terminal window)**
 
-    npm run dev-db
+    npm run start-db
+    
+**Stop the MongoDB database**
+
+    npm run stop-db
 
 **Run in development**
 
@@ -35,9 +39,13 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 
     npm run build
 
-**Run in production**
+**Run in production (runs the database and application in a subprocess)**
 
     npm run start
+    
+**Stop production running (stops everything)**
+
+    npm run stop
 
 **Deploy with [NOW](https://zeit.co/now)**
 
