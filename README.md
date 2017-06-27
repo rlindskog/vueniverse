@@ -11,7 +11,7 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
  - Universal HMR for a clean development process, thanks to Nuxtjs and BackPack.
  - Ready for deployment with [NOW](https://zeit.co/now)
 
-[Live Demo](https://vueniverse-zwhzspwelp.now.sh/) It might take a while to load if it's [asleep](https://zeit.co/docs/deployment-types/node#deployment-inactivity).
+[Live Demo](https://vueniverse-owwwqcfnel.now.sh) It might take a while to load if it's [asleep](https://zeit.co/docs/deployment-types/node#deployment-inactivity).
 
 *You must have [vue-cli](https://github.com/vuejs/vue-cli)* installed.
 
