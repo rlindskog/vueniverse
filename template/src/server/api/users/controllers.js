@@ -78,7 +78,16 @@ export const username = {
     res.json({ message: 'Update the user, and return the updated user.' })
   },
   async delete (req, res) {
-    res.json({ message: 'Delete the user, and return the deleted user' })
+    try {
+      if (req.user._doc.username === req.params.username) {
+        await User.findOneAndRemove({ username: req.user._doc.username })
+        res.json({ message: 'Successfully deleted user.' })
+      } else {
+        res.status(401).json({ message: 'Unauthorized.' })
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'something went wrong.' })
+    }
   }
 }
 

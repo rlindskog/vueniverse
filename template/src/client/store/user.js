@@ -77,6 +77,21 @@ export const mutations = {
   SIGN_OUT_FAILURE (state, error) {
     state.signOutPending = false
     console.error(error)
+  },
+  DELETE_USER_REQUEST (state) {
+    console.log('Delete user pending...')
+    state.deleteUserPending = true
+  },
+  DELETE_USER_SUCCESS (state, message) {
+    Cookies.remove('token')
+    state.isAuthenticated = false
+    Object.keys(state).forEach(key => { if (typeof key === 'string') state[key] = '' })
+    console.log('Delete user success!')
+    state.deleteUserPending = false
+  },
+  DELETE_USER_FAILURE (error) {
+    console.error(error)
+    state.deleteUserPending = false
   }
 }
 
@@ -102,10 +117,21 @@ export const actions = {
   async signOut ({ commit }) {
     try {
       commit('SIGN_OUT_REQUEST')
+      let { message } = await axios.post('/users/sign-out')
       commit('SIGN_OUT_SUCCESS')
       commit('CLEAR_LISTS', null, { root: true })
     } catch (error) {
       commit('SIGN_OUT_FAILURE', error)
+    }
+  },
+  async deleteUser ({ state, commit }) {
+    try {
+      commit('DELETE_USER_REQUEST')
+      let { message } = await axios.delete(`/users/${state.username}`)
+      commit('DELETE_USER_SUCCESS', message)
+      commit('CLEAR_LISTS', null, { root: true })
+    } catch (error) {
+      commit('DELETE_USER_FAILURE', error)
     }
   }
 }
