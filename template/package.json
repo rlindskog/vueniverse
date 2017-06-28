@@ -11,7 +11,7 @@
     "now-start": "node ./dist/server/main.js",
     "stop": "run-p stop-*",
     "deploy": "node ./scripts/deploy.js",
-    "create-admin": "node ./create-admin.js",
+    "create-admin": "node ./scripts/create-admin.js",
     "git": "run-s git-*",
     "start-app": "pm2 start ./dist/server/main.js -i max",
     "stop-app": "pm2 delete all",
