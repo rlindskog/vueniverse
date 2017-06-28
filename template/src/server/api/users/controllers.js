@@ -1,12 +1,10 @@
 import argon2 from 'argon2'
 import blacklist from 'express-jwt-blacklist'
-import randId from '~util/randId'
 import User from './models'
 import uuidV4 from 'uuid/v4'
 import jwt from 'jsonwebtoken'
-
-const SECRET = randId()
-const TENANT = randId()
+import stripUser from '~util/stripUser'
+import randId from '~util/randId'
 
 export const index = {
   async get (req, res) {
@@ -60,16 +58,16 @@ export const username = {
   async get (req, res) {
     try {
       // check if the logged in user has the same username as the requested user.
-      if (req.user._doc.username === req.params.username) {
-        delete req.user._doc.password
+      if (req.user.username === req.params.username) {
         // send over information with bots
-        res.json(req.user._doc)
+        res.json(req.user)
+      } else {
+        let fetchedUser = await User.findOne({ username: req.params.username })
+        res.json({
+          username: fetchedUser.username,
+          message: `Authentication by ${req.params.fetchedUser.username} required to view more...`
+        })
       }
-      let fetchedUser = await User.findOne({ username: req.params.username })
-      res.json({
-        username: fetchedUser.username,
-        message: `Authentication by ${req.params.fetchedUser.username} required to view more...`
-      })
     } catch (error) {
       res.status(500).json({ error: 'something went wrong.' })
     }
@@ -79,8 +77,8 @@ export const username = {
   },
   async delete (req, res) {
     try {
-      if (req.user._doc.username === req.params.username) {
-        await User.findOneAndRemove({ username: req.user._doc.username })
+      if (req.user.username === req.params.username) {
+        await User.findOneAndRemove({ username: req.user.username })
         res.json({ message: 'Successfully deleted user.' })
       } else {
         res.status(401).json({ message: 'Unauthorized.' })
@@ -107,18 +105,15 @@ export const signIn = {
       } else if (!matched) {
         throw Error({ code: 404, message: 'Authntication failed. Wrong password' })
       } else {
-        // eventually generate secret and aud for multi-tenancy. also think about using the crypto module instead.
+        user = stripUser(user)
         let token = jwt.sign(user, process.env.SECRET, {
           expiresIn: '30 days',
-          jwtid: uuidV4(),
-          audience: TENANT
+          jwtid: randId()
         })
-        let resUser = user.toObject()
-        delete resUser.password
         res.status(200).json({
           message: 'Enjoy your token!',
           token,
-          user: resUser
+          user
         })
       }
     } catch (error) {
@@ -131,12 +126,8 @@ export const signIn = {
 export const signOut = {
   async post (req, res) {
     try {
-      if (req.user) {
-        blacklist.revoke(req.user)
-        res.json({ message: 'Token revoked, user successfully signed out.' })  
-      } else {
-        res.json({ message: 'Not signed in.' })
-      }
+      blacklist.revoke(req.user)
+      res.json({ message: 'Token revoked, user successfully signed out.' })
     } catch (error) {
       // TODO: Handle different mongoose error codes acordingly instead of catch all
       res.status(500).json(error)

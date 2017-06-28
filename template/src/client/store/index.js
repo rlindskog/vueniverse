@@ -42,7 +42,6 @@ export const actions = {
     if (req.cookies.token) {
       let token = req.cookies.token
       let user = jwtDecode(token)
-      user = user._doc
       let data = { user, token }
       commit('SET_USER', data)
     }

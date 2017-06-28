@@ -12,7 +12,8 @@ export const state = () => {
     signUpPending: false,
     signInPending: false,
     signOutPending: false,
-    signInSuccess: false
+    signInSuccess: false,
+    deleteUserPending: false
   }
 }
 
@@ -52,7 +53,7 @@ export const mutations = {
     // $router.replace({ name: 'users-username', params: { username: state.user.username } })
   },
   SIGN_IN_FAILURE (state, error) {
-    console.log('Sign Up Failure.')
+    console.log('Sign In Failure.')
     state.signInPending = false
     console.error(error)
   },
@@ -61,7 +62,7 @@ export const mutations = {
     console.log('Sign out request pending....')
     state.signOutPending = true
   },
-  SIGN_OUT_SUCCESS (state) {
+  SIGN_OUT_SUCCESS (state, message) {
     Cookies.remove('token')
     state.isAuthenticated = false
     state.token = ''
@@ -70,7 +71,7 @@ export const mutations = {
     state.lastName = ''
     state.email = ''
     state.signOutPending = false
-    console.log('Sign out success!')
+    console.log('Sign out success!', message)
     state.signInSuccess = false
     state.signUpSuccess = false
   },
@@ -118,7 +119,7 @@ export const actions = {
     try {
       commit('SIGN_OUT_REQUEST')
       let { message } = await axios.post('/users/sign-out')
-      commit('SIGN_OUT_SUCCESS')
+      commit('SIGN_OUT_SUCCESS', message)
       commit('CLEAR_LISTS', null, { root: true })
     } catch (error) {
       commit('SIGN_OUT_FAILURE', error)
