@@ -33,8 +33,7 @@ const User = mongoose.model('User', userSchema)
 
 userSchema.pre('save', async function (callback) {
   if (!this.isModified('password')) return callback()
-  const hash = await argon2.hash(this.password)
-  this.password = hash
+  this.password = await argon2.hash(this.password)
   callback()
 })
 

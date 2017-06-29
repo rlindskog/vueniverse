@@ -3,11 +3,13 @@ import usersRoutes from './users/routes'
 import adminRoutes from './admin/routes'
 import listEndpoints from 'express-list-endpoints'
 import authenticate from '~middleware/authenticate'
+import { handleServerErrors } from '~middleware/express-server-error'
+
 const router = Router()
 
-// Add USERS Routes
+router.use('/', handleServerErrors)
 router.use('/users', usersRoutes)
-router.use('/admin', authenticate, adminRoutes) // required admin permissions...
+router.use('/admin', authenticate(), adminRoutes)
 
 router.get('/', (req, res) => {
   res.json(listEndpoints(router))
