@@ -8,7 +8,8 @@ export const state = () => {
     username: '',
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    admin: false
   }
 }
 
@@ -35,6 +36,7 @@ export const mutations = {
     state.username = data.user.username
     state.firstName = data.user.firstName
     state.lastName = data.user.lastName
+    state.admin = data.user.admin
     state.email = data.user.email
     state.token = data.token
     state.isAuthenticated = true
@@ -116,8 +118,8 @@ export const actions = {
       commit('DELETE_USER_REQUEST')
       let { data } = await axios.delete(`/users/${state.username}`)
       commit('DELETE_USER_SUCCESS', data)
-      commit('CLEAR_LISTS', null, { root: true })
       commit('notification/SUCCESS', data, { root: true })
+      commit('CLEAR_LISTS', null, { root: true })
     } catch (error) {
       commit('DELETE_USER_FAILURE', error)
       commit('notification/SUCCESS', error.response.data, { root: true })

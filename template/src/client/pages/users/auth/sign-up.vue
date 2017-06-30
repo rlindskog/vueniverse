@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <v-layout>
-      <v-flex xs12 sm10 offset-sm1 md6 offset-md3 xl6 offset-xl6 >
+    <v-layout justify-center align-center>
+      <v-flex xs12 sm10 md8 lg6 xl6>
         <h3>Sign Up</h3>
         <sign-up-form :redirect="{ name: 'users-auth-sign-in' }"/>
         <br>

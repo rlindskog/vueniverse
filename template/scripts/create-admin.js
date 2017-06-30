@@ -5,7 +5,7 @@ const MongoClient = require('mongodb').MongoClient
 const uuidv4 = require('uuid/v4')
 const argon2 = require('argon2')
 
-async function createAdmin (username = 'admin', email = 'admin@email.com') {
+async function createAdmin (username = 'remove-this-admin', email = 'admin@email.com') {
   try {
     let db = await MongoClient.connect(process.env.DB_URL)
     let rand = uuidv4().split('-').join('')
