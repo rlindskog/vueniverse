@@ -6,9 +6,10 @@
 export default {
   props: [ 'redirect' ],
   methods: {
-    async signOut () {
-      await this.$store.dispatch('user/signOut')
-      if (!this.$store.state.notification.success) this.$router.replace(this.redirect)
+    signOut () {
+      this.$store.dispatch('user/signOut').then(() => {
+        if (this.$store.state.notification.success) this.$router.replace(this.redirect)
+      })
     }
   }
 }
