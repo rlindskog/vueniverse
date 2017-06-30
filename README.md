@@ -79,10 +79,10 @@ If you have any problems, please don't hesitate to create an issue!
 
 **FUTURE TODO**
  - Create an admin interface! (currently working on)
- - Create a few more NPM convenience commands, such as "create-admin-user" and "create-module" (MVC module in the REST API + Admin interface page).
+ - Create a few more NPM convenience commands, such as "create-admin-user" and "create-app" (which would create an MVC folder in the API, and add a page on the admin interface).
  - vue-cli option to choose bewteen PostgreSQL and MongoDB (MongoDB currently implemented)
  - vue-cli option to choose bewteen AirBNB and Standard Linting Style.
- - vue-cli option to include tests.
+ - vue-cli option to include unit/e2e tests.
 
  
 **Pull requests welcome!**
