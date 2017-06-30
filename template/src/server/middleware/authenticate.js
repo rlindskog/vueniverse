@@ -46,11 +46,12 @@ const jwtMiddleware = function (options) {
   })
 }
 
-const authErrors = function (err, req, res, next) {
-  if (err.name === 'UnauthorizedError') {
-    res.status(401).json({ error: { name: err.name, message: err.message, code: err.code } })
+const authErrors = function (error, req, res, next) {
+  if (error.name === 'UnauthorizedError') {
+    res.status(401).json({ name: error.name, message: error.message })
   } else {
-    res.status(500).json({ error: err })
+    console.error(error)
+    res.status(500).json({ message: 'Internal Server Error.' })
   }
 }
 
