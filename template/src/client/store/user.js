@@ -114,11 +114,13 @@ export const actions = {
   async deleteUser ({ state, commit }) {
     try {
       commit('DELETE_USER_REQUEST')
-      let { message } = await axios.delete(`/users/${state.username}`)
-      commit('DELETE_USER_SUCCESS', message)
+      let { data } = await axios.delete(`/users/${state.username}`)
+      commit('DELETE_USER_SUCCESS', data)
       commit('CLEAR_LISTS', null, { root: true })
+      commit('notification/SUCCESS', data, { root: true })
     } catch (error) {
       commit('DELETE_USER_FAILURE', error)
+      commit('notification/SUCCESS', error.response.data, { root: true })
     }
   }
 }
