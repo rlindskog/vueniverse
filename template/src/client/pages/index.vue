@@ -12,6 +12,9 @@
         <v-container v-else>
           <h3 class="text-xs-center">Vueniverse</h3>
           <img id="logo" :src="vueniverseLogo" alt="vueniverse_logo.svg">
+          <h4>Source code</h4>
+          <a href="https://vueniverse.now.sh/_src" target="_blank"><h5>NOW</h5></a>
+          <a href="https://www.github.com/rlindskog/vueniverse" target="_blank"><h5>Github</h5></a>
         </v-container>
       </v-flex>
     </v-layout>

@@ -21,7 +21,7 @@ export const mutations = {
     console.log('fetchUser success!')
   },
   FETCH_USER_FAILURE (state, error) {
-    console.error(error)
+    console.error(error.response.data.error)
   }
 }
 

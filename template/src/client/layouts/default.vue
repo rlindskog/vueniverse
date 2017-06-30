@@ -1,4 +1,3 @@
-{{{{raw}}}}
 <template>
   <v-app>
     <v-navigation-drawer
@@ -92,12 +91,27 @@
     </v-toolbar>
     <main>
       <v-container fluid>
-        <nuxt/>
+        <nuxt></nuxt>
       </v-container>
     </main>
+    <v-snackbar
+      :timeout="3000"
+      :bottom="true"
+      :right="true"
+      :multi-line="true"
+      :success="$store.state.notification.context === 'success'"
+      :info="$store.state.notification.context === 'info'"
+      :warning="$store.state.notification.context === 'warning'"
+      :error="$store.state.notification.context === 'error'"
+      :primary="$store.state.notification.context === 'primary'"
+      :secondary="$store.state.notification.context === 'secondary'"
+      v-model="$store.state.notification.snackbar"
+    >
+      {{ $store.state.notification.text }}
+      <v-btn light flat @click.native="$store.state.notification.snackbar = false">Close</v-btn>
+    </v-snackbar>
   </v-app>
 </template>
-{{{{/raw}}}}
 
 <script>
 // search icons: https://material.io/icons/ asd
@@ -124,7 +138,7 @@ export default {
           ]
         }
       ],
-      name: '{{name}}',
+      name: 'vueniverse',
       drawer: true,
       mini: true,
       right: null,

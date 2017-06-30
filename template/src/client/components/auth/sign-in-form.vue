@@ -1,4 +1,3 @@
-{{{{raw}}}}
 <template>
   <v-card class="grey lighten-4 elevation-3">
     <v-container fluid>
@@ -16,11 +15,9 @@
         ></v-text-field>
         <v-btn @click.native="submit">Submit</v-btn>
       </form>
-      <p class="error--text">{{ errorMessage }}</p>
     </v-container>
   </v-card>
 </template>
-{{{{/raw}}}}
 
 <script>
 export default {
@@ -29,7 +26,6 @@ export default {
     return {
       username: '',
       password: '',
-      errorMessage: ''
     }
   },
   methods: {
@@ -38,10 +34,10 @@ export default {
         username: this.username,
         password: this.password,
       }).then(() => {
-        if (this.$store.state.user.signInSuccess) {
-          this.$router.replace(this.redirect)
-        } else {
-          this.errorMessage = 'Incorrect username or password'        
+        if (this.$store.state.notification.success) this.$router.replace(this.redirect)
+        else {
+          this.username = ''
+          this.password = ''
         }
       })
     }

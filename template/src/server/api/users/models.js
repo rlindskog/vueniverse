@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import argon2 from 'argon2'
+import { ServerError } from '~middleware/express-server-error'
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -35,6 +36,12 @@ userSchema.pre('save', async function (callback) {
   if (!this.isModified('password')) return callback()
   this.password = await argon2.hash(this.password)
   callback()
+})
+
+userSchema.post('save', function (error, doc, next) {
+  if (error.name === 'MongoError' && error.code === 11000) {
+    next(new ServerError('User taken.', { status: 409, log: false }))
+  }
 })
 
 // don't ever return password on creation.

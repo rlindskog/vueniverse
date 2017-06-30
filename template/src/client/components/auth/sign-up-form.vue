@@ -11,11 +11,11 @@
           hint="At least 5 characters."
           :rules="[usernameExists]"
           min="5"
-          counter
+          :counter="this.username.length > 0 ? true : false"
         ></v-text-field>
         <v-text-field
           @keyup.native="checkEmail"
-          :rules="[emailExists]"
+          :rules="[isEmail, emailExists]"
           v-model="email"
           label="Email"
           name="email"
@@ -37,7 +37,7 @@
           name="password1"
           label="Password"
           hint="At least 8 characters. Mix it up!"
-          counter
+          :counter="this.password1.length > 0 ? true : false"
           min="8"
           append-icon="visibility_off"
           :type="pw1 ? 'password' : 'text'"
@@ -62,6 +62,7 @@
 
 <script>
 import axios from '~plugins/axios'
+import isEmail from 'validator/lib/isEmail'
 let usernameTimeout = null
 let emailTimeout = null
 
@@ -90,6 +91,9 @@ export default {
     },
     emailExists() {
       return this.emailExistsData ? 'User with that email already exists.' : ''
+    },
+    isEmail() {
+      return !isEmail(this.email) && this.email.length ? 'Must be a valid email' : ''
     }
   },
   methods: {
@@ -103,7 +107,6 @@ export default {
             data: username
           }
         }).then(data => {
-          console.log(data)
           this.usernameExistsData = data.data.exists
         }).catch(error => {
           console.error(error)
@@ -120,7 +123,6 @@ export default {
             data: email
           }
         }).then(data => {
-          console.log(data)
           this.emailExistsData = data.data.exists
         }).catch(error => {
           console.error(error)
@@ -128,7 +130,6 @@ export default {
       }, 500)
     },
     submit () {
-      console.log('submitting')
       this.$store.dispatch('user/signUp', {
         username: this.username,
         email: this.email,
@@ -137,18 +138,8 @@ export default {
         password1: this.password1,
         password2: this.password2
       }).then(() => {
-        if (this.$store.state.user.signUpSuccess) {
-          this.$router.replace(this.redirect)
-        } else {
-          this.errorMessage = 'Something went wrong'        
-        }
+        if (this.$store.state.notification.success) this.$router.replace(this.redirect)
       })
-      this.email = ''
-      this.username = ''
-      this.firstName = ''
-      this.lastName = ''
-      this.password1 = ''
-      this.password2 = ''
     }
   }
 }

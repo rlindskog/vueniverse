@@ -23,7 +23,7 @@ export const index = {
         let password = await argon2.hash(password1)
         let newUser = new User({ username, email, firstName, lastName, password })
         let savedUser = await newUser.save()
-        res.json(savedUser)
+        res.json({ message: `Thanks for signing up, ${savedUser.username}!` })
       } else {
         throw new ServerError('Passwords don\'t match.', { status: 400 })
       }
@@ -94,11 +94,11 @@ export const signIn = {
     try {
       let { username, password } = req.body
       let user = await User.findOne({ username })
-      if (!user) throw new ServerError('Authentication failed. Incorrect username or password', { status: 401 })
+      if (!user) throw new ServerError('Authentication failed. Incorrect username or password', { status: 401, log: false })
       let passwordHash = user.password
       let matched = await argon2.verify(passwordHash, password)
       if (!user || !matched || !username || !password) {
-        throw new ServerError('Authentication failed. Incorrect username or password', { status: 401 })
+        throw new ServerError('Authentication failed. Incorrect username or password', { status: 401, log: false })
       } else {
         user = stripUser(user)
         let token = jwt.sign(user, process.env.SECRET, { expiresIn: '30 days', jwtid: randId() })
@@ -114,7 +114,7 @@ export const signOut = {
   async post (req, res) {
     try {
       blacklist.revoke(req.user)
-      res.json({ message: 'Token revoked, user successfully signed out.' })
+      res.json({ message: 'Sign out successful. Good bye! :)' })
     } catch (error) {
       res.handleServerError(error)
     }
