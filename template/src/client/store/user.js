@@ -90,7 +90,7 @@ export const actions = {
   async signIn ({ commit }, payload) {
     try {
       commit('SIGN_IN_REQUEST')
-      // commit('notification/PENDING', null, { root: true })
+      commit('notification/PENDING', null, { root: true })
       let { data } = await axios.post('/users/sign-in', payload)
       commit('SIGN_IN_SUCCESS', data)
       commit('notification/SUCCESS', data, { root: true })
