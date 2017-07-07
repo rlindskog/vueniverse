@@ -1,8 +1,8 @@
 {
-  "name": "vueniverse",
-  "version": "1.0.0",
-  "description": "A Vueniverse project",
-  "author": "Ryan Lindskog <r.lindskog17@gmail.com>",
+  "name": "{{name}}",
+  "version": "0.0.1",
+  "description": "{{description}}",
+  "author": "{{author}}",
   "private": true,
   "scripts": {
     "dev": "backpack dev",
