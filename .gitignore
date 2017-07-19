@@ -1,18 +1,18 @@
 # dependencies
-demo/node_modules
+node_modules
 
 # logs
 npm-debug.log
 
-# Nuxt generate
-demo/dist
+
+# logs
+npm-debug.log
+
+# Nuxt/Backpack build directory
+dist
 
 # Local Database
-demo/db
+db
 
 # Secrets
-demo/secrets.json
-
-# Production environment
-demo/secrets.json
-
+secrets.json
