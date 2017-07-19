@@ -11,6 +11,7 @@ export const state = () => {
   }
 }
 export const mutations = {
+  // what, start
   PENDING (state) {
     state.mode = 'info'
     state.pending = true

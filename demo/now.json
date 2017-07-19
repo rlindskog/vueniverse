@@ -1,0 +1,4 @@
+{
+  "name": "vueniverse",
+  "env": ".prod.env"
+}

@@ -1,4 +1,3 @@
-{{{{raw}}}}
 <template>
   <v-app>
     <v-navigation-drawer
@@ -17,7 +16,7 @@
             </v-list-tile-avatar>
             <v-list-tile-content>
               <v-list-tile-title>
-                {{name}}
+                vueniverse
                 </v-list-tile-title>
             </v-list-tile-content>
             <v-list-tile-action icon>
@@ -32,10 +31,10 @@
         <v-list-group v-for="item in items" :value="item.active" v-bind:key="item.title">
           <v-list-tile slot="item" :ripple="!item.items" :router="!item.items" :to="item.to ? item.to : ''">
             <v-list-tile-action icon light>
-              <v-icon icon light>{{ item.action }}</v-icon>
+              <v-icon icon light></v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+              <v-list-tile-title></v-list-tile-title>
             </v-list-tile-content>
             <v-list-tile-action v-if="item.items">
               <v-icon light>keyboard_arrow_down</v-icon>
@@ -44,10 +43,10 @@
           <v-list-item v-for="subItem in item.items" v-bind:key="subItem.title">
             <v-list-tile ripple>
               <v-list-tile-content>
-                <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
+                <v-list-tile-title></v-list-tile-title>
               </v-list-tile-content>
               <v-list-tile-action>
-                <v-icon>{{ subItem.action }}</v-icon>
+                <v-icon></v-icon>
               </v-list-tile-action>
             </v-list-tile>
           </v-list-item>
@@ -56,7 +55,7 @@
     </v-navigation-drawer>
     <v-toolbar class="indigo darken-4" light fixed>
       <v-toolbar-side-icon v-if="$store.state.user.isAuthenticated" light @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>{{name}}</v-toolbar-title>
+      <v-toolbar-title>vueniverse</v-toolbar-title>
       <v-menu bottom left>
         <v-btn icon="icon" slot="activator" light>
           <v-icon>more_vert</v-icon>
@@ -112,7 +111,6 @@
     </v-snackbar>
   </v-app>
 </template>
-{{{{/raw}}}}
 
 <script>
 // search icons: https://material.io/icons/ asd
@@ -139,7 +137,7 @@ export default {
           ]
         }
       ],
-      name: '{{name}}',
+      name: 'vueniverse',
       drawer: true,
       mini: true,
       right: null

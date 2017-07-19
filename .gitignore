@@ -1,17 +1,18 @@
 # dependencies
-node_modules
+demo/node_modules
 
 # logs
 npm-debug.log
 
-# Nuxt build
-.nuxt
-
 # Nuxt generate
-dist
+demo/dist
 
-# Backpack build
-build
+# Local Database
+demo/db
 
-# test version of template
-vueniverse-run
+# Secrets
+demo/secrets.json
+
+# Production environment
+demo/secrets.json
+
