@@ -16,6 +16,8 @@ export const mutations = {
     state.user.firstName = data.user.firstName
     state.user.lastName = data.user.lastName
     state.user.email = data.user.email
+    state.user.admin = data.user.admin
+    state.user.role = data.user.role
   },
   SET_USERS (state, payload) {
     state.lists.users = payload.users
@@ -53,6 +55,7 @@ export const actions = {
       commit('FETCH_ALL_USERS_SUCCESS', data)
     } catch (error) {
       commit('FETCH_ALL_USERS_FAILURE', error)
+      commit('notification/FAILURE', error.response.data, { root: true })
     }
   }
 }

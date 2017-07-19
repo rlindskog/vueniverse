@@ -9,7 +9,7 @@ const router = Router()
 
 router.use('/', handleServerErrors)
 router.use('/users', usersRoutes)
-router.use('/admin', authenticate(), adminRoutes)
+router.use('/admin', authenticate({ role: 'admin' }), adminRoutes)
 
 router.get('/', (req, res) => {
   res.json(listEndpoints(router))

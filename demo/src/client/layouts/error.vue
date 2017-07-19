@@ -6,7 +6,7 @@
     <h2>
       {{ error.message }}
     </h2>
-    <v-btn router to="/" v-if="error.statusCode === 404">Home</v-btn>
+    <v-btn nuxt to="/" v-if="error.statusCode === 404">Home</v-btn>
   </v-container>
 </template>
 

@@ -11,7 +11,6 @@
           hint="At least 5 characters."
           :rules="[usernameExists]"
           min="5"
-          :counter="this.username.length > 0 ? true : false"
         ></v-text-field>
         <v-text-field
           @keyup.native="checkEmail"
@@ -84,16 +83,20 @@ export default {
   },
   computed: {
     passwordsMatch() {
+      if (this.password2.length === 0) return true
       return this.password1 === this.password2 ? '' : 'Passwords don\'t match'
     },
     usernameExists() {
-      return this.usernameExistsData ? 'Username already exists.' : ''
+      if (this.username.length) return this.usernameExistsData ? 'Username already exists.' : ''
+      else return true
     },
     emailExists() {
-      return this.emailExistsData ? 'User with that email already exists.' : ''
+      if (this.username.length) return this.emailExistsData ? 'User with that email already exists.' : ''
+      else return true
     },
     isEmail() {
-      return !isEmail(this.email) && this.email.length ? 'Must be a valid email' : ''
+      if (this.email.length === 0) return true
+      return !isEmail(this.email) ? 'Must be a valid email' : ''
     }
   },
   methods: {

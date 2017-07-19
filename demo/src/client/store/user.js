@@ -9,6 +9,7 @@ export const state = () => {
     firstName: '',
     lastName: '',
     email: '',
+    role: 'user',
     admin: false
   }
 }
@@ -30,13 +31,12 @@ export const mutations = {
     console.log('Sign In pending...')
   },
   SIGN_IN_SUCCESS (state, data) {
-    if (process.BROWSER_BUILD) {
-      Cookies.set('token', `${data.token}`)
-    }
+    if (process.BROWSER_BUILD) Cookies.set('token', `${data.token}`)
     state.username = data.user.username
     state.firstName = data.user.firstName
     state.lastName = data.user.lastName
     state.admin = data.user.admin
+    state.role = data.user.role
     state.email = data.user.email
     state.token = data.token
     state.isAuthenticated = true
@@ -58,6 +58,8 @@ export const mutations = {
     state.firstName = ''
     state.lastName = ''
     state.email = ''
+    state.role = ''
+    state.admin = false
     console.log('Sign out success!', message)
   },
   SIGN_OUT_FAILURE (state, error) {
@@ -122,7 +124,7 @@ export const actions = {
       commit('CLEAR_LISTS', null, { root: true })
     } catch (error) {
       commit('DELETE_USER_FAILURE', error)
-      commit('notification/SUCCESS', error.response.data, { root: true })
+      commit('notification/FAILURE', error.response.data, { root: true })
     }
   }
 }

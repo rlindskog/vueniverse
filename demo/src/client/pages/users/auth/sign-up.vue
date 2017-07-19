@@ -1,9 +1,9 @@
 <template>
   <v-container>
     <v-layout justify-center align-center>
-      <v-flex xs12 sm10 md8 lg6 xl6>
+      <v-flex xs12 sm10 md8 xl6>
         <h3>Sign Up</h3>
-        <sign-up-form :redirect="{ name: 'users-auth-sign-in' }"/>
+        <sign-up-form :redirect="{ name: 'users-auth-sign-in' }"></sign-up-form>
         <br>
         <p>Already have an account? <nuxt-link :to="{ name: 'users-auth-sign-in' }">Sign in!</nuxt-link></p>
       </v-flex>

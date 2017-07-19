@@ -33,6 +33,7 @@ export const actions = {
       commit('FETCH_USER_SUCCESS', data)
     } catch (error) {
       commit('FETCH_USER_FAILURE', error)
+      commit('notification/FAILURE', error.response.data, { root: true })
     }
   }
 }

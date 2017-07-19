@@ -8,6 +8,7 @@ import { ServerError } from '~middleware/express-server-error'
 
 export const index = {
   async get (req, res) {
+    console.log(req.user)
     try {
       let users = await User.find({})
       if (!users) throw new ServerError('No users exist at this moment.', { status: 404 })
@@ -100,8 +101,15 @@ export const signIn = {
       if (!user || !matched || !username || !password) {
         throw new ServerError('Authentication failed. Incorrect username or password', { status: 401, log: false })
       } else {
+        let subject = user.id
         user = stripUser(user)
-        let token = jwt.sign(user, process.env.SECRET, { expiresIn: '30 days', jwtid: randId() })
+        // 'jwtid' will represent the token, and 'subject' will represent the user.
+        // The subject will be useful when manually revoking tokens on the admin.
+        let token = jwt.sign(
+          user,
+          process.env.SECRET,
+          { expiresIn: '30 days', jwtid: randId(), subject }
+        )
         res.status(200).json({ message: `Welcome, ${user.username}!`, token, user })
       }
     } catch (error) {

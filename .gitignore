@@ -16,3 +16,6 @@ db
 
 # Secrets
 secrets.json
+
+# Redis dump
+dump.rdb

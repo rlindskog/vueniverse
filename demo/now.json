@@ -1,4 +1,5 @@
 {
   "name": "vueniverse",
+  "alias": "vueniverse",
   "env": ".prod.env"
 }

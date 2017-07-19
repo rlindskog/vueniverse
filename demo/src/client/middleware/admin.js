@@ -1,8 +1,8 @@
-export default function ({ store, redirect }) {
+export default function ({ error, store }) {
   // If the user is not authenticated
   if (!store.state.user.isAuthenticated) {
-    return redirect('/users/auth/sign-in')
-  } else if (!store.state.user.admin) {
-    return redirect(`/users/${store.state.user.username}`)
+    return error({ statusCode: 404 })
+  } else if (store.state.user.role !== 'admin') {
+    return error({ statusCode: 404 })
   }
 }

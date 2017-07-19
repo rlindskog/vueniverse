@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout justify-center align-center>
-      <v-flex xs12 sm10 md8 lg6 xl6>
+      <v-flex xs12 sm10 md8 xl6>
         <h3>Sign In</h3>
         <sign-in-form :redirect="redirect"></sign-in-form>
         <br>

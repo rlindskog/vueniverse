@@ -4,6 +4,7 @@
       enable-resize-watcher
       disable-route-watcher
       persistent
+      light
       :mini-variant.sync="mini"
       v-model="drawer"
       v-if="$store.state.user.isAuthenticated">
@@ -25,7 +26,7 @@
         </v-list-tile>
       </v-list>
       <v-list>
-        <v-list-group v-for="item in items" :value="item.active" v-model="item.active" v-bind:key="item.title">
+        <v-list-group v-for="item in items" v-model="item.active" :key="item.title">
           <v-list-tile slot="item" :ripple="!item.items" nuxt :to="item.route || !item.items ? item.route : ''">
             <v-list-tile-action icon light>
               <v-icon icon light>{{ item.action }}</v-icon>
@@ -39,10 +40,10 @@
           </v-list-tile>
           <v-list-tile
             v-for="subItem in item.items"
-            v-bind:key="subItem.title"
+            :key="subItem.title"
             ripple
             nuxt
-            :to="item.route"
+            :to="subItem.route"
             @click.native.stop="toggleNavDrawer(items)">
             <v-list-tile-content>
               <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
@@ -58,19 +59,16 @@
       <v-toolbar-side-icon v-if="$store.state.user.isAuthenticated" light @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>{{ name }}</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-menu bottom>
+      <v-menu bottom left>
         <v-btn icon="icon" slot="activator" light>
           <v-icon>more_vert</v-icon>
         </v-btn>
         <v-list>
-          <v-list-tile ripple nuxt :to="{ name: 'users-username', params: { username: $store.state.user.username } }" v-if="$store.state.user.isAuthenticated">
+          <v-list-tile ripple nuxt :to="{ name: 'admin', params: { username: $store.state.user.username } }">
+            <v-list-tile-title>Admin Interface</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile ripple nuxt :to="{ name: 'users-username', params: { username: $store.state.user.username } }">
             <v-list-tile-title>{{ $store.state.user.username }}</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile ripple nuxt to="/users">
-            <v-list-tile-title>Users</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile ripple nuxt to="/admin" v-if="$store.state.user.role === 'admin'">
-            <v-list-tile-title>Admin</v-list-tile-title>
           </v-list-tile>
           <v-list-tile ripple nuxt to="/users/auth/sign-in" v-if="!$store.state.user.isAuthenticated">
             <v-list-tile-title>Sign In</v-list-tile-title>
@@ -100,46 +98,41 @@
       :error="$store.state.notification.context === 'error'"
       :primary="$store.state.notification.context === 'primary'"
       :secondary="$store.state.notification.context === 'secondary'"
-      v-model="$store.state.notification.snackbar">
+      v-model="$store.state.notification.snackbar"
+    >
       {{ $store.state.notification.text }}
-      <v-btn dark flat @click.native="$store.state.notification.snackbar = false">Close</v-btn>
+      <v-btn light flat @click.native="$store.state.notification.snackbar = false">Close</v-btn>
     </v-snackbar>
   </v-app>
 </template>
 
 <script>
 import signOutButton from '~components/auth/sign-out-button.vue'
+
 // search icons: https://material.io/icons/
 export default {
   components: { signOutButton },
+  middleware: 'admin',
   data () {
     return {
       items: [
         {
-          action: 'android',
-          title: 'Something',
+          action: 'accessibility',
+          title: 'Tables',
           active: false,
           items: [
-            { title: 'First' },
-            { title: 'Second' },
-            { title: 'Third' }
-          ]
-        },
-        {
-          action: 'settings',
-          title: 'Settings',
-          active: false,
-          items: [
-            { title: 'Payment' },
-            { title: 'Account' },
-            { title: 'Privacy' }
+            { title: 'Users', route: { name: 'admin-users' } },
+            { title: 'Posts', route: { name: 'admin-posts' } }
           ]
         }
       ],
-      name: 'Vueniverse',
+      name: 'Vueniverse Admin',
       drawer: true,
       mini: true,
-      right: null
+      right: null,
+      profilePath: this.$store.state.user.isAuthenticated
+        ? { name: 'users-username', params: { username: 'rlindskog' } }
+        : { path: '/' }
     }
   },
   methods: {

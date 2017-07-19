@@ -3,6 +3,7 @@ dist
 node_modules
 secrets.json
 db
+dump.rdb
 
 static/manifest*.json
 static/sw.js
