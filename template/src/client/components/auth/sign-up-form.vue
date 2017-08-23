@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import axios from '~plugins/axios'
+import axios from '~/plugins/axios'
 import isEmail from 'validator/lib/isEmail'
 let usernameTimeout = null
 let emailTimeout = null

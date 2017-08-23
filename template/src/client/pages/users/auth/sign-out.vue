@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import signOutForm from '~components/auth/sign-out-form.vue'
+import signOutForm from '~/components/auth/sign-out-form.vue'
 export default {
   data() {
     return {

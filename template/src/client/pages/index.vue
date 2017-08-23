@@ -23,7 +23,7 @@
 {{{{/raw}}}}
 
 <script>
-import vueniverseLogo from '~assets/img/vueniverse_logo.svg'
+import vueniverseLogo from '~/assets/img/vueniverse_logo.svg'
 export default {
   data() {
     return {
