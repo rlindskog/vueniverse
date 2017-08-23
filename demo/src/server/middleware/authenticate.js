@@ -1,7 +1,6 @@
 import blacklist from 'express-jwt-blacklist'
 import { compose } from 'compose-middleware'
-import { series } from 'middleware-flow'
-import { ServerError } from '~middleware/express-server-error'
+import { ServerError } from '~/middleware/express-server-error'
 import jwt from 'express-jwt'
 import redis from 'redis'
 

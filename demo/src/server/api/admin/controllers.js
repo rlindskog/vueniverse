@@ -1,8 +1,9 @@
 import blacklist from 'express-jwt-blacklist'
-import stripUser from '~util/stripUser'
-import { ServerError } from '~middleware/express-server-error'
-import User from '../users/models'
 import { promisify } from 'util'
+import Table from '~/generic/controllers/table'
+import stripUser from '~/util/stripUser'
+import { ServerError } from '~/middleware/express-server-error'
+import User from '../users/models'
 
 export const index = {
   async get (req, res) {
@@ -10,40 +11,7 @@ export const index = {
   }
 }
 
-export const users = {
-  async get (req, res) {
-    try {
-      let { sortBy, descending, page, rowsPerPage } = req.query
-      // set a default sortBy to username
-      sortBy = sortBy && sortBy.length ? sortBy : 'username'
-      // change vuetify descending method (boolean) into mongoose method (-1, 0, 1)
-      if (descending === true) descending = -1
-      else if (descending === false) descending = 1
-      else descending = -1
-      // turn query that should be numbers into numbers
-      page = parseInt(page)
-      rowsPerPage = parseInt(rowsPerPage)
-      // check to see if rowsPerPage is set to all, which is notated by -1.
-      let users
-      if (rowsPerPage !== -1) {
-        let paginateFrom = page * rowsPerPage - rowsPerPage
-        let paginateTo = page * rowsPerPage
-        users = await User.find({})
-        .sort({ [sortBy]: descending })
-        .skip(paginateFrom)
-        .limit(paginateTo)
-      } else {
-        // if rowsPerPage is set to 'all' (-1), don't wory about pagination.
-        users = await User.find({}).sort({ [sortBy]: descending })
-      }
-      let total = await User.count({})
-      if (!users) throw new ServerError('No users exist at this moment.', { status: 404 })
-      res.json({ users, total })
-    } catch (error) {
-      res.handleServerError(error)
-    }
-  }
-}
+export const users = new Table(User, 'username')
 
 export const username = {
   async put (req, res) {
@@ -80,13 +48,16 @@ let purge = promisify(blacklist.purge)
 export const revoke = {
   async post (req, res) {
     try {
-      let { username } = req.query
+      let username = req.params.username
       let user = await User.findOne({ username })
       let sub = user.id
-      // We will use purge to blacklist ALL of the users (sub) tokens
-      // Alternatively, you can use .revoke to blacklist 1 token, but you must somehow have access to the jtw
-      // Also, because we don't have access to the expiration time, we must set it ourselves to now.
-      // // node-jsonwebtoken uses this to calculate exp, let's use it too.
+      /*
+      We will use purge to blacklist ALL of the users (sub) tokens
+      Alternatively, you can use `blacklist.revoke` to blacklist 1 token, but you must 
+      somehow have access to the jtw.
+      Also, because we don't have access to the expiration time, we must set it ourselves to now.
+      node-jsonwebtoken uses Math function this to calculate `exp`, let's use it too.
+      */
       await purge({ sub }, Math.floor(Date.now() / 1000))
       res.json({ message: 'Token successfully revoked.' })
     } catch (error) {

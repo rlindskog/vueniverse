@@ -1,9 +1,6 @@
 <template>
   <v-dialog v-model="signOutDialog">
-    <v-btn
-      error
-      dark
-      slot="activator">
+    <v-btn error dark flat slot="activator">
       <slot>Sign Out</slot>
     </v-btn>
     <v-card>
@@ -11,8 +8,8 @@
       <v-card-text><slot name="text">We'll miss you.</slot></v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn class="error--text darken-1" flat="flat" @click.native="signOutDialog = false">No</v-btn>
-        <v-btn class="success--text darken-1" flat="flat" @click.native="signOut">Yes</v-btn>
+        <v-btn class="error--text darken-1" flat @click.native="signOutDialog = false">No</v-btn>
+        <v-btn class="success--text darken-1" flat @click.native="signOut">Yes</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

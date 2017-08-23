@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import argon2 from 'argon2'
-import { ServerError } from '~middleware/express-server-error'
+import { ServerError } from '~/middleware/express-server-error'
 
 const userSchema = new mongoose.Schema({
   username: {

@@ -10,7 +10,7 @@ const router = Router()
 
 router.get('/', index.get)
 router.get('/users', users.get)
-router.post('/users/revoke', revoke.post)
+router.post('/users/:username/revoke', revoke.post)
 router.route('/users/:username')
   .post(username.put)
   .get(username.get)

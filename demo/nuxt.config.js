@@ -7,13 +7,13 @@ require('dotenv').config({
 
 module.exports = {
   build: {
-    analyze: true,
+    // analyze: true,
     // extractCSS: true,
     vendor: ['vuetify', 'jwt-decode', 'axios']
   },
   buildDir: 'dist/client',
   cache: true,
-  css: [{ src: '~assets/style/app.styl', lang: 'styl' }],
+  css: [{ src: '~/assets/style/app.styl', lang: 'styl' }],
   env: {
     HOST: process.env.HOST,
     PORT: process.env.PORT
@@ -30,7 +30,7 @@ module.exports = {
     ]
   },
   manifest: {
-    name: 'vueniverse',
+    name: 'Vueniverse',
     description: 'A Vueniverse project',
     theme_color: '#188269'
   },
@@ -38,7 +38,7 @@ module.exports = {
     '@nuxtjs/pwa',
     '@nuxtjs/component-cache'
   ],
-  plugins: ['~plugins/vuetify.js'],
+  plugins: ['~/plugins/vuetify.js'],
   render: {
     static: {
       maxAge: '1y',
@@ -52,5 +52,5 @@ module.exports = {
   router: {
     middleware: ['ssr-cookie']
   },
-  srcDir: path.resolve(__dirname, 'src', 'client')
+  srcDir: 'src/client'
 }

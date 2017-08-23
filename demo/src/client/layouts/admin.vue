@@ -101,13 +101,13 @@
       v-model="$store.state.notification.snackbar"
     >
       {{ $store.state.notification.text }}
-      <v-btn light flat @click.native="$store.state.notification.snackbar = false">Close</v-btn>
+      <v-btn dark flat @click.native="$store.state.notification.snackbar = false">Close</v-btn>
     </v-snackbar>
   </v-app>
 </template>
 
 <script>
-import signOutButton from '~components/auth/sign-out-button.vue'
+import signOutButton from '~/components/auth/sign-out-button.vue'
 
 // search icons: https://material.io/icons/
 export default {

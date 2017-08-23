@@ -1,4 +1,4 @@
-import axios from '~plugins/axios'
+import axios from '~/plugins/axios'
 import Cookies from 'js-cookie'
 
 export const state = () => {

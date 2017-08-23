@@ -70,7 +70,7 @@
             <v-list-tile-title>Users</v-list-tile-title>
           </v-list-tile>
           <v-list-tile ripple nuxt to="/admin" v-if="$store.state.user.role === 'admin'">
-            <v-list-tile-title>Admin</v-list-tile-title>
+            <v-list-tile-title>Admin Interface</v-list-tile-title>
           </v-list-tile>
           <v-list-tile ripple nuxt to="/users/auth/sign-in" v-if="!$store.state.user.isAuthenticated">
             <v-list-tile-title>Sign In</v-list-tile-title>
@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import signOutButton from '~components/auth/sign-out-button.vue'
+import signOutButton from '~/components/auth/sign-out-button.vue'
 // search icons: https://material.io/icons/
 export default {
   components: { signOutButton },

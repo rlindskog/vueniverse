@@ -2,13 +2,12 @@ import argon2 from 'argon2'
 import blacklist from 'express-jwt-blacklist'
 import User from './models'
 import jwt from 'jsonwebtoken'
-import stripUser from '~util/stripUser'
-import randId from '~util/randId'
-import { ServerError } from '~middleware/express-server-error'
+import stripUser from '~/util/stripUser'
+import randId from '~/util/randId'
+import { ServerError } from '~/middleware/express-server-error'
 
 export const index = {
   async get (req, res) {
-    console.log(req.user)
     try {
       let users = await User.find({})
       if (!users) throw new ServerError('No users exist at this moment.', { status: 404 })
