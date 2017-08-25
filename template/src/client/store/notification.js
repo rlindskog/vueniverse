@@ -30,5 +30,8 @@ export const mutations = {
     state.text = data.message
     state.snackbar = true
     state.pending = false
+  },
+  UPDATE_SNACKBAR (state, value) {
+    state.snackbar = value
   }
 }

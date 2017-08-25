@@ -106,9 +106,9 @@
       :error="$store.state.notification.context === 'error'"
       :primary="$store.state.notification.context === 'primary'"
       :secondary="$store.state.notification.context === 'secondary'"
-      v-model="$store.state.notification.snackbar">
+      v-model="snackbar">
       {{ $store.state.notification.text }}
-      <v-btn light flat @click.native="$store.state.notification.snackbar = false">Close</v-btn>
+      <v-btn light flat @click.native="$store.commit('notification/UPDATE_SNACKBAR', false)">Close</v-btn>
     </v-snackbar>
   </v-app>
 </template>
@@ -143,6 +143,16 @@ export default {
       drawer: true,
       mini: true,
       right: null
+    }
+  },
+  computed: {
+    snackbar: {
+      get () {
+        return this.$store.state.toast.snackbar
+      },
+      set (value) {
+        this.$store.commit('toast/UPDATE_SNACKBAR', value)
+      }
     }
   }
 }
