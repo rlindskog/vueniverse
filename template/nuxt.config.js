@@ -7,6 +7,7 @@ require('dotenv').config({
 
 module.exports = {
   build: {
+    extractCSS: true,
     vendor: ['vuetify', 'jwt-decode', 'axios']
   },
   buildDir: 'dist/client',
