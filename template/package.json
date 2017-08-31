@@ -29,7 +29,7 @@
     "@nuxtjs/component-cache": "^0.1.5",
     "@nuxtjs/pwa": "^0.2.0",
     "axios": "^0.16.2",
-    "bcrypt": "^1.0.3",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "compose-middleware": "^2.2.0",
     "cookie-parser": "^1.4.3",
