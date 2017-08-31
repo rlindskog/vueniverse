@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import blacklist from 'express-jwt-blacklist'
 import User from './models'
 import jwt from 'jsonwebtoken'
