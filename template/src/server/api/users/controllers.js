@@ -1,4 +1,4 @@
-import argon2 from 'argon2'
+import bcrypt from 'bcrypt'
 import blacklist from 'express-jwt-blacklist'
 import User from './models'
 import jwt from 'jsonwebtoken'
@@ -20,7 +20,7 @@ export const index = {
     try {
       let { username, email, firstName, lastName, password1, password2 } = req.body
       if (password1 === password2) {
-        let password = await argon2.hash(password1)
+        let password = await bcrypt.hash(password1, 10)
         let newUser = new User({ username, email, firstName, lastName, password })
         let savedUser = await newUser.save()
         res.json({ message: `Thanks for signing up, ${savedUser.username}!` })
@@ -96,7 +96,7 @@ export const signIn = {
       let user = await User.findOne({ username })
       if (!user) throw new ServerError('Authentication failed. Incorrect username or password', { status: 401, log: false })
       let passwordHash = user.password
-      let matched = await argon2.verify(passwordHash, password)
+      let matched = await bcrypt.compare(password, passwordHash)      
       if (!user || !matched || !username || !password) {
         throw new ServerError('Authentication failed. Incorrect username or password', { status: 401, log: false })
       } else {
