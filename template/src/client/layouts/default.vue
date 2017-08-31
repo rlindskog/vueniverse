@@ -148,10 +148,10 @@ export default {
   computed: {
     snackbar: {
       get () {
-        return this.$store.state.toast.snackbar
+        return this.$store.state.notification.snackbar
       },
       set (value) {
-        this.$store.commit('toast/UPDATE_SNACKBAR', value)
+        this.$store.commit('notification/UPDATE_SNACKBAR', value)
       }
     }
   }
