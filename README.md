@@ -23,7 +23,7 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
     cd {{ your-project-name }}
     npm install
 
-**Run a MongoDB database locally**
+**Start a MongoDB database locally**
 
     npm run start-db
 
@@ -47,7 +47,7 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 
     npm run stop
 
-**Run a Redis database locally (use this if chose the redis session option)**
+**Start a Redis database locally (use this if chose the redis session option)**
 
 [Install](https://redis.io/topics/quickstart)
 
@@ -80,8 +80,8 @@ If you have any problems, please don't hesitate to create an issue!
 **FUTURE TODO**
  - Create an admin interface! (currently working on)
  - Create a few more NPM convenience commands, such as "create-admin-user" and "create-app" (which would create an MVC folder in the API, and add a page on the admin interface).
- - vue-cli option to choose bewteen PostgreSQL and MongoDB (MongoDB currently implemented)
- - vue-cli option to choose bewteen AirBNB and Standard Linting Style.
+ - vue-cli option to choose between PostgreSQL and MongoDB (MongoDB currently implemented)
+ - vue-cli option to choose between AirBNB and Standard Linting Style.
  - vue-cli option to include unit/e2e tests.
 
  
