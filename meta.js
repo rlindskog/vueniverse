@@ -29,5 +29,5 @@ module.exports = {
       ]
     }
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run start-db\n  npm run dev\n\nDocumentation can be found at https://www.github.com/rlindskog/vueniverse"
+  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}yarn install\n  yarn start-db\n  yarn dev\n\nDocumentation can be found at https://www.github.com/rlindskog/vueniverse"
 }
