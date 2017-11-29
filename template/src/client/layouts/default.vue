@@ -54,7 +54,7 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar class="indigo darken-4" light fixed>
+    <v-toolbar class="darken-4" light fixed>
       <v-toolbar-side-icon v-if="$store.state.user.isAuthenticated" light @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>{{name}}</v-toolbar-title>
       <v-menu bottom left>

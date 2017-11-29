@@ -1,13 +1,13 @@
 // Specify overrides (theme and/or base variables etc.)
-// See https://vuetifyjs.com/quick-start
+// See https://vuetifyjs.com/style/colors
 $theme := {
-  primary: indigo
-  accent: #ce93d8
-  secondary: #424242
-  info: #0D47A1
-  warning: #ffb300
-  error: #B71C1C
-  success: #2E7D32
+  primary: '#1976D2',
+  secondary: '#424242',
+  accent: '#82B1FF',
+  error: '#FF5252',
+  info: '#2196F3',
+  success: '#4CAF50',
+  warning: '#FFC107'
 }
 
 // Import Vuetify styling
@@ -19,6 +19,15 @@ $theme := {
 }
 .page-enter, .page-leave-active {
   opacity: 0
+}
+
+aside {
+  height: 100vh;
+  position: absolute;
+}
+
+main {
+  padding-top: 48px;
 }
 
 // Paginate transition effect.
