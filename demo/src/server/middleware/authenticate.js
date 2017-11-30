@@ -5,8 +5,7 @@ import redis from 'redis'
 
 // redis persisted store.
 const client = redis.createClient(process.env.SESSION_PORT, process.env.SESSION_HOST)
-if (process.env.NODE_ENV === 'production')
-  client.auth(process.env.SESSION_PASSWORD, error => { if (error) throw error })
+if (process.env.NODE_ENV === 'production') { client.auth(process.env.SESSION_PASSWORD, error => { if (error) throw error }) }
 
 // https://github.com/layerhq/express-jwt-blacklist
 blacklist.configure({

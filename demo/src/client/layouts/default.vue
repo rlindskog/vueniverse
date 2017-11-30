@@ -149,7 +149,6 @@ export default {
         }
       ],
       name: 'vueniverse demo',
-      drawer: true,
       mini: true,
       right: null
     }

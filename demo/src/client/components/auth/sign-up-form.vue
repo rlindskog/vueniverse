@@ -79,20 +79,20 @@ export default {
       pw1: true,
       pw2: true,
       usernameExistsData: false,
-      emailExistsData: false,
+      emailExistsData: false
     }
   },
   computed: {
-    passwordsMatch() {
+    passwordsMatch () {
       return this.password1 === this.password2 ? '' : 'Passwords don\'t match'
     },
-    usernameExists() {
+    usernameExists () {
       return this.usernameExistsData ? 'Username already exists.' : ''
     },
-    emailExists() {
+    emailExists () {
       return this.emailExistsData ? 'User with that email already exists.' : ''
     },
-    isEmail() {
+    isEmail () {
       return !isEmail(this.email) && this.email.length ? 'Must be a valid email' : ''
     }
   },
