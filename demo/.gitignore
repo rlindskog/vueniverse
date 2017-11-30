@@ -7,4 +7,3 @@ db
 static/manifest*.json
 static/sw.js
 static/workbox-sw*.js
-demo/dump.rdb
