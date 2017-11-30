@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
-import { ServerError } from '~/middleware/express-server-error'
+import { ServerError } from 'express-server-error'
 
 const userSchema = new mongoose.Schema({
   username: {

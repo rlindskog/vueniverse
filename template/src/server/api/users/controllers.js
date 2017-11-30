@@ -4,7 +4,7 @@ import User from './models'
 import jwt from 'jsonwebtoken'
 import stripUser from '~/util/stripUser'
 import randId from '~/util/randId'
-import { ServerError } from '~/middleware/express-server-error'
+import { ServerError } from 'express-server-error'
 
 export const index = {
   async get (req, res) {
