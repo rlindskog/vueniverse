@@ -12,7 +12,10 @@ module.exports = {
   },
   buildDir: 'dist/client',
   cache: true,
-  css: [{ src: '~/assets/style/app.styl', lang: 'styl' }],
+  css: [
+    { src: 'vuetify/dist/vuetify.min.css', lang: 'css' },
+    { src: '~/assets/style/app.styl', lang: 'styl' }
+  ],
   env: {
     HOST: process.env.HOST,
     PORT: process.env.PORT
