@@ -10,8 +10,9 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
  - Abstracted WebPack build process.
  - Universal HMR for a clean development process, thanks to Nuxtjs and BackPack.
  - Ready for deployment with [NOW](https://zeit.co/now)
+ - Ready for deployment with [Heroku](https://heroku.com)
 
-[Live Demo](https://vueniverse.now.sh) It might take a while to load if it's [asleep](https://zeit.co/docs/deployment-types/node#deployment-inactivity).
+[Live Demo](https://vueniverse.herokuapp.com/) It might take a while to load if it's asleep. Give it some time to warm up.
 
 *You must have [vue-cli](https://github.com/vuejs/vue-cli)* installed.
 

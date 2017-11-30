@@ -1,33 +1,33 @@
 module.exports = {
-  "helpers": {
-    "raw": function (options) {
+  'helpers': {
+    'raw': function (options) {
       return options.fn(this)
     }
   },
-  "prompts": {
-    "name": {
-      "type": "string",
-      "required": true,
-      "message": "Project name"
+  'prompts': {
+    'name': {
+      'type': 'string',
+      'required': true,
+      'message': 'Project name'
     },
-    "description": {
-      "type": "string",
-      "required": false,
-      "message": "Project description",
-      "default": "A Vueniverse project"
+    'description': {
+      'type': 'string',
+      'required': false,
+      'message': 'Project description',
+      'default': 'A Vueniverse project'
     },
-    "author": {
-      "type": "string",
-      "message": "Author"
+    'author': {
+      'type': 'string',
+      'message': 'Author'
     },
-    "session": {
-      "type": "list",
-      "message": "Choose a session strategy (for blacklisting JWTs)",
-      "choices": [
-        "redis",
-        "in-memory"
+    'session': {
+      'type': 'list',
+      'message': 'Choose a session strategy (for blacklisting JWTs)',
+      'choices': [
+        'redis',
+        'in-memory'
       ]
     }
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}yarn install\n  yarn start-db\n  yarn dev\n\nDocumentation can be found at https://www.github.com/rlindskog/vueniverse"
+  'completeMessage': 'To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}yarn install\n  yarn start-db\n  yarn dev\n\nDocumentation can be found at https://www.github.com/rlindskog/vueniverse'
 }
