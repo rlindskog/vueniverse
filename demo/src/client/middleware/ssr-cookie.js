@@ -1,4 +1,4 @@
-import axios from '~plugins/axios'
+import axios from '~/plugins/axios'
 
 export default function ({isServer, req}) {
   if (isServer) {

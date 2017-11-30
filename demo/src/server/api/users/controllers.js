@@ -2,9 +2,9 @@ import argon2 from 'argon2'
 import blacklist from 'express-jwt-blacklist'
 import User from './models'
 import jwt from 'jsonwebtoken'
-import stripUser from '~util/stripUser'
-import randId from '~util/randId'
-import { ServerError } from '~middleware/express-server-error'
+import stripUser from '~/util/stripUser'
+import randId from '~/util/randId'
+import { ServerError } from '~/middleware/express-server-error'
 
 export const index = {
   async get (req, res) {

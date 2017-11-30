@@ -2,8 +2,8 @@ import { Router } from 'express'
 import usersRoutes from './users/routes'
 import adminRoutes from './admin/routes'
 import listEndpoints from 'express-list-endpoints'
-import authenticate from '~middleware/authenticate'
-import { handleServerErrors } from '~middleware/express-server-error'
+import authenticate from '~/middleware/authenticate'
+import { handleServerErrors } from '~/middleware/express-server-error'
 
 const router = Router()
 
