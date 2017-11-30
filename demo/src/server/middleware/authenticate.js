@@ -2,7 +2,6 @@ import blacklist from 'express-jwt-blacklist'
 import { compose } from 'compose-middleware'
 import jwt from 'express-jwt'
 
-
 // in-memory store
 blacklist.configure({ tokenId: 'jti' })
 
