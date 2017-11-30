@@ -151,7 +151,6 @@ export default {
         }
       ],
       name: 'mevn-stack',
-      drawer: true,
       mini: true,
       right: null
     }

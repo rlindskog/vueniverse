@@ -1,6 +1,6 @@
 import { urlencoded, json } from 'body-parser'
 import cookieParser from 'cookie-parser'
-import cors from 'cors'
+// import cors from 'cors'
 import express from 'express'
 import mongoose from 'mongoose'
 import { Nuxt, Builder } from 'nuxt'
@@ -42,6 +42,7 @@ mongoose.Promise = global.Promise
 mongoose.connect(process.env.DB_URL)
 
 app.listen(process.env.PORT, process.env.HOST, err => {
+  if (err) { console.log(err) }
   console.log(`Server listening on http://${process.env.HOST}:${process.env.PORT}`)
 })
 

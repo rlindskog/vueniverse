@@ -41,17 +41,17 @@ export default {
     }
   },
   fetch ({ store, params, req }) {
-    let username = params.username
-    let token = process.SERVER_BUILD ? req.cookies.token : Cookies.get('token')
-    return store.dispatch('fetchedUser/fetchUser', { username })
+    const username = params.username
+    const token = process.SERVER_BUILD ? req.cookies.token : Cookies.get('token')
+    return store.dispatch('fetchedUser/fetchUser', { username, token })
   },
   methods: {
     deleteUser () {
       this.dialog = false
       this.$store.dispatch('user/deleteUser')
-      .then(() => {
-        this.$router.replace({ path: '/' })
-      })
+        .then(() => {
+          this.$router.replace({ path: '/' })
+        })
     }
   }
 }
