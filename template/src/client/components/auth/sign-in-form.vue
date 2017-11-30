@@ -25,14 +25,14 @@ export default {
   data () {
     return {
       username: '',
-      password: '',
+      password: ''
     }
   },
   methods: {
     submit () {
       this.$store.dispatch('user/signIn', {
         username: this.username,
-        password: this.password,
+        password: this.password
       }).then(() => {
         if (this.$store.state.notification.success) this.$router.replace(this.redirect)
         else {

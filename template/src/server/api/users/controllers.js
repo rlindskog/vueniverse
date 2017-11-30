@@ -2,9 +2,9 @@ import bcrypt from 'bcryptjs'
 import blacklist from 'express-jwt-blacklist'
 import User from './models'
 import jwt from 'jsonwebtoken'
-import stripUser from '~util/stripUser'
-import randId from '~util/randId'
-import { ServerError } from '~middleware/express-server-error'
+import stripUser from '~/util/stripUser'
+import randId from '~/util/randId'
+import { ServerError } from 'express-server-error'
 
 export const index = {
   async get (req, res) {
@@ -96,7 +96,7 @@ export const signIn = {
       let user = await User.findOne({ username })
       if (!user) throw new ServerError('Authentication failed. Incorrect username or password', { status: 401, log: false })
       let passwordHash = user.password
-      let matched = await bcrypt.compare(password, passwordHash)      
+      let matched = await bcrypt.compare(password, passwordHash)
       if (!user || !matched || !username || !password) {
         throw new ServerError('Authentication failed. Incorrect username or password', { status: 401, log: false })
       } else {

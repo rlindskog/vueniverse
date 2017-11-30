@@ -6,7 +6,7 @@ const now = new NowClient()
 // this script checks to your NOW account to see if it has any secrets saved that you have locally.
 // if it does, it deletes them, and adds your secrets locally. It does this on each deployment to maintain fresh secrets.
 // it will run a deployment in the shell.
-async function deploy(secretsObj) {
+async function deploy (secretsObj) {
   try {
     let currentSecrets = await now.getSecrets()
     currentSecrets = currentSecrets.map(item => item.name)

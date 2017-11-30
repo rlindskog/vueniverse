@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-import argon2 from 'argon2'
-import { ServerError } from '~middleware/express-server-error'
+import bcrypt from 'bcryptjs'
+import { ServerError } from 'express-server-error'
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -34,7 +34,7 @@ const User = mongoose.model('User', userSchema)
 
 userSchema.pre('save', async function (callback) {
   if (!this.isModified('password')) return callback()
-  this.password = await argon2.hash(this.password)
+  this.password = await bcrypt.hash(this.password, 10)
   callback()
 })
 

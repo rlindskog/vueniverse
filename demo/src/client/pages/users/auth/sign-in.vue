@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import signInForm from '~components/auth/sign-in-form.vue'
+import signInForm from '~/components/auth/sign-in-form.vue'
 export default {
   components: { signInForm },
-  data() {
+  data () {
     return {
       redirect: { name: 'index' }
     }

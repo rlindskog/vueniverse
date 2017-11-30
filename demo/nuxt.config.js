@@ -7,11 +7,15 @@ require('dotenv').config({
 
 module.exports = {
   build: {
+    extractCSS: true,
     vendor: ['vuetify', 'jwt-decode', 'axios']
   },
   buildDir: 'dist/client',
   cache: true,
-  css: [{ src: '~assets/style/app.styl', lang: 'styl' }],
+  css: [
+    { src: 'vuetify/dist/vuetify.min.css', lang: 'css' },
+    { src: '~/assets/style/app.styl', lang: 'styl' }
+  ],
   env: {
     HOST: process.env.HOST,
     PORT: process.env.PORT
@@ -36,7 +40,7 @@ module.exports = {
     '@nuxtjs/pwa',
     '@nuxtjs/component-cache'
   ],
-  plugins: ['~plugins/vuetify.js'],
+  plugins: ['~/plugins/vuetify.js'],
   render: {
     static: {
       maxAge: '1y',

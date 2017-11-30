@@ -3,13 +3,13 @@ require('dotenv').config({
 })
 const MongoClient = require('mongodb').MongoClient
 const uuidv4 = require('uuid/v4')
-const argon2 = require('argon2')
+const bcrypt = require('bcryptjs')
 
 async function createAdmin (username = 'remove-this-admin', email = 'admin@email.com') {
   try {
     let db = await MongoClient.connect(process.env.DB_URL)
     let rand = uuidv4().split('-').join('')
-    let password = await argon2.hash(rand)
+    let password = await bcrypt.hash(this.password, 10)
     await db.collection('users').insertOne({ username, email, password, admin: true })
     console.log(`
       username: ${username}
