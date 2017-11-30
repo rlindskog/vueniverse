@@ -11,7 +11,6 @@ export const state = () => {
   }
 }
 export const mutations = {
-  // what, start
   PENDING (state) {
     state.mode = 'info'
     state.pending = true
@@ -31,5 +30,8 @@ export const mutations = {
     state.text = data.message
     state.snackbar = true
     state.pending = false
+  },
+  UPDATE_SNACKBAR (state, value) {
+    state.snackbar = value
   }
 }

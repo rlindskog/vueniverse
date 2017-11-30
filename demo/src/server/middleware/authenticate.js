@@ -1,21 +1,10 @@
 import blacklist from 'express-jwt-blacklist'
 import { compose } from 'compose-middleware'
 import jwt from 'express-jwt'
-import redis from 'redis'
 
-// redis persisted store.
-const client = redis.createClient(process.env.SESSION_PORT, process.env.SESSION_HOST)
-if (process.env.NODE_ENV === 'production') { client.auth(process.env.SESSION_PASSWORD, error => { if (error) throw error }) }
 
-// https://github.com/layerhq/express-jwt-blacklist
-blacklist.configure({
-  tokenId: 'jti',
-  store: {
-    type: 'redis',
-    client,
-    keyPrefix: 'vueniverse:'
-  }
-})
+// in-memory store
+blacklist.configure({ tokenId: 'jti' })
 
 const jwtMiddleware = function (options) {
   return jwt({

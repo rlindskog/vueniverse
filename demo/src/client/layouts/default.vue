@@ -8,26 +8,23 @@
       :mini-variant.sync="mini"
       v-model="drawer"
       v-if="$store.state.user.isAuthenticated"
-      app
-    >
-      <v-list class="main-list" dense>
-        <v-list-item>
-          <v-list-tile avatar tag="div">
-            <v-list-tile-avatar>
-              <img src="https://randomuser.me/api/portraits/men/85.jpg" />
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <v-list-tile-title>
-                {{name}}
-                </v-list-tile-title>
-            </v-list-tile-content>
-            <v-list-tile-action icon>
-              <v-btn icon light @click.stop="mini = !mini">
-                <v-icon light>chevron_left</v-icon>
-              </v-btn>
-            </v-list-tile-action>
-          </v-list-tile>
-        </v-list-item>
+      app>
+      <v-list class="main-list">
+        <v-list-tile avatar tag="div">
+          <v-list-tile-avatar>
+            <img src="https://randomuser.me/api/portraits/men/85.jpg" />
+          </v-list-tile-avatar>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              {{name}}
+              </v-list-tile-title>
+          </v-list-tile-content>
+          <v-list-tile-action icon>
+            <v-btn icon light @click.stop="mini = !mini">
+              <v-icon light>chevron_left</v-icon>
+            </v-btn>
+          </v-list-tile-action>
+        </v-list-tile>
       </v-list>
       <v-list>
         <v-list-group v-for="item in items" :value="item.active" v-bind:key="item.title">
@@ -42,52 +39,41 @@
               <v-icon light>keyboard_arrow_down</v-icon>
             </v-list-tile-action>
           </v-list-tile>
-          <v-list-item v-for="subItem in item.items" v-bind:key="subItem.title">
-            <v-list-tile ripple>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
-              </v-list-tile-content>
-              <v-list-tile-action>
-                <v-icon>{{ subItem.action }}</v-icon>
-              </v-list-tile-action>
-            </v-list-tile>
-          </v-list-item>
+          <v-list-tile v-for="subItem in item.items" v-bind:key="subItem.title" ripple>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
+            </v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>{{ subItem.action }}</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar app fixed>
       <v-toolbar-side-icon v-if="$store.state.user.isAuthenticated" light @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>{{name}}</v-toolbar-title>
+      <v-spacer></v-spacer>
       <v-menu bottom left>
         <v-btn icon="icon" slot="activator" light>
           <v-icon>more_vert</v-icon>
         </v-btn>
         <v-list>
-          <v-list-item>
-            <v-list-tile ripple router to="/users/auth/sign-in" v-if="!$store.state.user.isAuthenticated">
-              <v-list-tile-title>Sign In</v-list-tile-title>
-            </v-list-tile>
-          </v-list-item>
-          <v-list-item>
-            <v-list-tile ripple router to="/users/auth/sign-up" v-if="!$store.state.user.isAuthenticated">
-              <v-list-tile-title>Sign Up</v-list-tile-title>
-            </v-list-tile>
-          </v-list-item>
-          <v-list-item>
-            <v-list-tile ripple router to="/users/auth/sign-out" v-if="$store.state.user.isAuthenticated">
-              <v-list-tile-title>Sign Out</v-list-tile-title>
-            </v-list-tile>
-          </v-list-item>
-          <v-list-item>
-            <v-list-tile ripple router to="/users">
-              <v-list-tile-title>Users</v-list-tile-title>
-            </v-list-tile>
-          </v-list-item>
-          <v-list-item>
-            <v-list-tile ripple router to="/admin" v-if="$store.state.user.admin">
-              <v-list-tile-title>Admin</v-list-tile-title>
-            </v-list-tile>
-          </v-list-item>
+          <v-list-tile ripple router to="/users/auth/sign-in" v-if="!$store.state.user.isAuthenticated">
+            <v-list-tile-title>Sign In</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile ripple router to="/users/auth/sign-up" v-if="!$store.state.user.isAuthenticated">
+            <v-list-tile-title>Sign Up</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile ripple router to="/users/auth/sign-out" v-if="$store.state.user.isAuthenticated">
+            <v-list-tile-title>Sign Out</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile ripple router to="/users">
+            <v-list-tile-title>Users</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile ripple router to="/admin" v-if="$store.state.user.admin">
+            <v-list-tile-title>Admin</v-list-tile-title>
+          </v-list-tile>
         </v-list>
       </v-menu>
     </v-toolbar>
@@ -106,15 +92,10 @@
       :bottom="true"
       :right="true"
       :multi-line="true"
-      :success="$store.state.notification.context === 'success'"
-      :info="$store.state.notification.context === 'info'"
-      :warning="$store.state.notification.context === 'warning'"
-      :error="$store.state.notification.context === 'error'"
-      :primary="$store.state.notification.context === 'primary'"
-      :secondary="$store.state.notification.context === 'secondary'"
+      :color="snackbarColor"
       v-model="snackbar">
       {{ $store.state.notification.text }}
-      <v-btn light flat @click="snackbar = false">Close</v-btn>
+      <v-btn dark flat @click="snackbar = false">Close</v-btn>
     </v-snackbar>
   </v-app>
 </template>
@@ -148,7 +129,7 @@ export default {
           ]
         }
       ],
-      name: 'vueniverse demo',
+      name: 'Vueniverse',
       mini: true,
       right: null
     }
@@ -161,6 +142,9 @@ export default {
       set (value) {
         this.$store.commit('notification/UPDATE_SNACKBAR', value)
       }
+    },
+    snackbarColor () {
+      return this.$store.state.notification.context
     }
   }
 }

@@ -3,7 +3,7 @@ import cookieParser from 'cookie-parser'
 // import cors from 'cors'
 import express from 'express'
 import mongoose from 'mongoose'
-import Nuxt from 'nuxt'
+import { Nuxt, Builder } from 'nuxt'
 
 import config from '../../nuxt.config'
 import apiRoutes from './api'
@@ -23,24 +23,27 @@ app.use(cookieParser())
 // Import API Routes
 app.use('/api', apiRoutes)
 
-// https://github.com/nuxt/express/tree/master/template
-// Start nuxt.js
-async function start () {
-  // Import and Set Nuxt.js options
-  config.dev = !(process.env.NODE_ENV === 'production')
-  // Instantiate nuxt.js
-  const nuxt = new Nuxt(config)
-  // Add nuxt.js middleware
-  app.use(nuxt.render)
-  // Listen to the server
-  app.listen(process.env.PORT, process.env.HOST)
-  console.log(`Server listening on http://${process.env.HOST}:${process.env.PORT}`) // eslint-disable-line no-console
+config.dev = !(process.env.NODE_ENV === 'production')
+
+// Init Nuxt.js
+const nuxt = new Nuxt(config)
+
+// Build only in dev mode
+if (config.dev) {
+  const builder = new Builder(nuxt)
+  builder.build()
 }
+
+// Give nuxt middleware to express
+app.use(nuxt.render)
 
 // setup the database connection
 mongoose.Promise = global.Promise
 mongoose.connect(process.env.DB_URL)
 
-start()
+app.listen(process.env.PORT, process.env.HOST, err => {
+  if (err) { console.log(err) }
+  console.log(`Server listening on http://${process.env.HOST}:${process.env.PORT}`)
+})
 
 export default app
