@@ -7,7 +7,7 @@ import { handleServerErrors } from 'express-server-error'
 
 const router = Router()
 
-router.use('/', handleServerErrors)
+router.use('/', handleServerErrors())
 router.use('/users', usersRoutes)
 router.use('/admin', authenticate(), adminRoutes)
 
