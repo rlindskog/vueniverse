@@ -4,9 +4,10 @@
     <v-layout justify-center align-center>
       <v-flex xs12 sm10 md8 lg6 xl6>
         <v-container v-if="$store.state.user.isAuthenticated">
-          <h3 class="text-xs-center">Vueniverse<v-btn class="xs-center" router :to="{ name: 'users-username', params: { username: this.$store.state.user.username } }">
-            view your profile.
-          </v-btn></h3>
+          <h3 class="text-xs-center">Vueniverse
+            <v-btn class="xs-center" router 
+              :to="{ name: 'users-username', params: { username: $store.state.user.username } }">view your profile</v-btn>
+          </h3>
           <img id="logo" :src="vueniverseLogo" alt="vueniverse_logo.svg">
         </v-container>
         <v-container v-else align="center">

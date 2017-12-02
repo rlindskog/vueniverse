@@ -59,11 +59,11 @@ export const username = {
       if (req.user.username === req.params.username) {
         res.json(req.user)
       } else {
-        let fetchedUser = await User.findOne({ username: req.params.username })
+        const fetchedUser = await User.findOne({ username: req.params.username })
         if (!fetchedUser) throw new ServerError(`User with username '${req.params.username}' doesn't exist.`, { status: 404 })
         res.json({
           username: fetchedUser.username,
-          message: `Authentication by ${req.params.fetchedUser.username} required to view more...`
+          message: `Authentication by ${fetchedUser.username} required to view more...`
         })
       }
     } catch (error) {
