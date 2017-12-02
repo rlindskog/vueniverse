@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "backpack dev",
     "build": "cross-env NODE_ENV=production run-p build-client build-server",
-    "start-pm2": "cross-env NODE_ENV=production run-p start-app",
+    "start-local": "cross-env NODE_ENV=production run-p start-*",
     "start": "node ./dist/server/main.js",
     "stop": "run-p stop-*",
     "deploy": "node ./scripts/deploy.js",
