@@ -42,8 +42,9 @@ export const username = {
   },
   async delete (req, res) {
     try {
-      let deleted = await User.findOneAndRemove({ username: req.user.username })
-      if (!deleted) throw new ServerError(`User with username '${req.params.username}' doesn't exist.`, { status: 404 })
+      let { username } = req.params
+      let deleted = await User.findOneAndRemove({ username })
+      if (!deleted) throw new ServerError(`User with username '${username}' doesn't exist.`, { status: 404 })
       res.json({ message: 'Successfully deleted user.' })
     } catch (error) {
       res.handleServerError(error)

@@ -10,7 +10,12 @@ async function createAdmin (username = 'remove-this-admin', email = 'admin@email
     let db = await MongoClient.connect(process.env.DB_URL)
     let rand = uuidv4().split('-').join('')
     let password = await bcrypt.hash(rand, 10)
-    await db.collection('users').insertOne({ username, email, password, role: 'admin' })
+    let admin = await db.collection('users').findOne({ username })
+    if (admin) {
+      await db.collection('users').updateOne({ username }, { password })
+    } else {
+      await db.collection('users').insertOne({ username, email, password, role: 'admin' })
+    }
     console.log(`
       username: ${username}
       password: ${rand}
