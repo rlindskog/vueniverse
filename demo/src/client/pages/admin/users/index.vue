@@ -69,7 +69,9 @@ export default {
       totalUsers: 0,
       users: [],
       loading: true,
-      pagination: {},
+      pagination: {
+        sortBy: 'createdAt'
+      },
       selected: [],
       headers: [
         { text: 'Username', value: 'username', editable: false, link: true },
