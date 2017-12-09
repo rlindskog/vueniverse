@@ -1,13 +1,14 @@
 <template>
   <v-container>
     <div>
-      Welcome to the admin
+      <h1>Welcome to the admin</h1>
     </div>
   </v-container>
 </template>
 
 <script>
 export default {
+  layout: 'admin',
   middleware: 'admin'
 }
 </script>

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
+import randId from '~/util/randId'
 import { ServerError } from 'express-server-error'
 
 const userSchema = new mongoose.Schema({
@@ -21,9 +22,13 @@ const userSchema = new mongoose.Schema({
     require: true,
     minlength: 5
   },
-  admin: {
-    type: Boolean,
-    default: false,
+  subject: {
+    type: String,
+    require: true
+  },
+  role: {
+    type: String,
+    default: 'user',
     require: true
   }
 }, {
@@ -35,6 +40,7 @@ const User = mongoose.model('User', userSchema)
 userSchema.pre('save', async function (callback) {
   if (!this.isModified('password')) return callback()
   this.password = await bcrypt.hash(this.password, 10)
+  this.subject = randId(20)
   callback()
 })
 

@@ -1,5 +1,6 @@
 import blacklist from 'express-jwt-blacklist'
 import { compose } from 'compose-middleware'
+import { ServerError } from 'express-server-error'
 import jwt from 'express-jwt'
 
 // in-memory store
@@ -36,8 +37,30 @@ const authErrors = function (error, req, res, next) {
   }
 }
 
+const roleMiddleware = role => (req, res, next) => {
+  if (role) {
+    let authorized = true
+    if (Array.isArray(role)) {
+      authorized = role.includes(req.user.role)
+    } else if (typeof role === 'string') {
+      authorized = role === req.user.role
+    }
+    if (!authorized) {
+      next(new ServerError('Insufficient Permissions', { name: 'InsufficientPermissions', status: 401 }))
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+}
+
 function authenticate (options = {}) {
-  return compose([jwtMiddleware(options), authErrors])
+  return compose([
+    jwtMiddleware(options),
+    roleMiddleware(options.role),
+    authErrors
+  ])
 }
 
 export default authenticate

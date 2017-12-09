@@ -9,7 +9,7 @@ export const state = () => {
     firstName: '',
     lastName: '',
     email: '',
-    admin: false
+    role: ''
   }
 }
 
@@ -34,7 +34,7 @@ export const mutations = {
     state.username = data.user.username
     state.firstName = data.user.firstName
     state.lastName = data.user.lastName
-    state.admin = data.user.admin
+    state.role = data.user.role
     state.email = data.user.email
     state.token = data.token
     state.isAuthenticated = true

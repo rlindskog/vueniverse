@@ -108,30 +108,24 @@ export default {
   },
   data () {
     return {
-      drawer: null,
       items: [
         {
-          action: 'android',
-          title: 'Something',
+          action: 'accessibility',
+          title: 'Tables',
+          active: false,
           items: [
-            { title: 'First' },
-            { title: 'Second' },
-            { title: 'Third' }
-          ]
-        },
-        {
-          action: 'settings',
-          title: 'Settings',
-          items: [
-            { title: 'Payment' },
-            { title: 'Account' },
-            { title: 'Privacy' }
+            { title: 'Users', route: { name: 'admin-users' } },
+            { title: 'Posts', route: { name: 'admin-posts' } }
           ]
         }
       ],
-      name: 'Vueniverse',
+      name: 'Vueniverse Admin',
+      drawer: true,
       mini: true,
-      right: null
+      right: null,
+      profilePath: this.$store.state.user.isAuthenticated
+        ? { name: 'users-username', params: { username: 'rlindskog' } }
+        : { path: '/' }
     }
   },
   computed: {

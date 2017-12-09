@@ -9,12 +9,12 @@ async function createAdmin (username = 'remove-this-admin', email = 'admin@email
   try {
     let db = await MongoClient.connect(process.env.DB_URL)
     let rand = uuidv4().split('-').join('')
-    let password = await bcrypt.hash(this.password, 10)
-    await db.collection('users').insertOne({ username, email, password, admin: true })
+    let password = await bcrypt.hash(rand, 10)
+    await db.collection('users').insertOne({ username, email, password, role: 'admin' })
     console.log(`
       username: ${username}
       password: ${rand}
-      Please sign in and create a new super user immediately. Delete this user when done.
+      Please sign in and create a new admin immediately. Delete this user when done.
     `)
     await db.close()
   } catch (error) {
