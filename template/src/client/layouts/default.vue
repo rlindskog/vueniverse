@@ -1,6 +1,6 @@
 {{{{raw}}}}
 <template>
-  <v-app id="inspire">
+  <v-app>
     <v-navigation-drawer
       fixed
       enable-resize-watcher
@@ -13,7 +13,7 @@
       <v-list class="main-list">
         <v-list-tile avatar tag="div">
           <v-list-tile-avatar>
-            <img src="https://randomuser.me/api/portraits/men/85.jpg" />
+            <img v-bind:src="getAvatar($store.state.user.username)" alt="" />
           </v-list-tile-avatar>
           <v-list-tile-content>
             <v-list-tile-title>
@@ -103,7 +103,9 @@
 {{{{/raw}}}}
 
 <script>
-// search icons: https://material.io/icons/ asd
+import getAvatar from '~/plugins/getAvatar'
+
+// search icons: https://material.io/icons/
 export default {
   props: {
     source: String
@@ -136,6 +138,11 @@ export default {
       right: null
     }
   },
+  methods: {
+    getAvatar (seed) {
+      return getAvatar(seed)
+    }
+  },
   computed: {
     snackbar: {
       get () {
@@ -151,3 +158,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.width400 {
+  max-width: 400px;
+  margin: auto;
+}
+</style>

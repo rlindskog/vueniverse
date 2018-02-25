@@ -39,11 +39,13 @@ app.use(nuxt.render)
 
 // setup the database connection
 mongoose.Promise = global.Promise
-mongoose.connect(process.env.DB_URL, { useMongoClient: true })
+// mongodb uri for deploy on heroku
+mongoose.connect(process.env.MONGODB_URI || process.env.DB_URL)
 
-app.listen(process.env.PORT, process.env.HOST, err => {
+const port = process.env.PORT || 3000
+app.listen(process.env.PORT, err => {
   if (err) { console.log(err) }
-  console.log(`Server listening on http://${process.env.HOST}:${process.env.PORT}`)
+  console.log(`Server listening on port ${port}`)
 })
 
 export default app

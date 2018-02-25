@@ -21,15 +21,15 @@ export const mutations = {
     console.log('fetchUser success!')
   },
   FETCH_USER_FAILURE (state, error) {
-    console.error(error.response.data.error)
+    console.error(error)
   }
 }
 
 export const actions = {
-  async fetchUser ({ state, commit }, { username }) {
+  async fetchUser ({ commit }, { username }) {
     try {
       commit('FETCH_USER_REQUEST')
-      let { data } = await axios.get(`/users/${username}`)
+      const { data } = await axios.get(`/users/${username}`)
       commit('FETCH_USER_SUCCESS', data)
     } catch (error) {
       commit('FETCH_USER_FAILURE', error)
