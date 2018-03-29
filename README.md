@@ -16,12 +16,16 @@ Vueniverse is a full-stack JavaScript starter project. Some of the features that
 *You must have [vue-cli](https://github.com/vuejs/vue-cli)* installed.
 
     npm install -g vue-cli
+    
+*You can use [yarn](https://github.com/yarnpkg/yarn)* installed.
+
+    npm install -g yarn
 
 **Create Project**
 
     vue init rlindskog/vueniverse {{ your-project-name }}
     cd {{ your-project-name }}
-    npm install
+    yarn install or npm install
 
 **Start a MongoDB database locally**
 
